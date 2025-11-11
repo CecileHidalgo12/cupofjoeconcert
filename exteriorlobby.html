@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title> EXTERIOR LOBBY </title>
+<title> EXTERIOR HALLWAYS </title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="map-style.css" />
 <link rel="stylesheet" href="survey.css" />
 </head>
 <body>
-<div class="top-container">
+
+  <div class="top-container">
   
      <div class="top-title">                         </div>
     <div class="zoom-controls">
@@ -22,7 +23,9 @@
   
     <button id="nextBtn" class="next-btn">Next</button>
   </div>
-   <div class="info-bubble2">  ℹ️YOU ARE EVALUATING EXTERIOR LOBBIES</div>
+   <div class="info-bubble2">  ℹ️YOU ARE EVALUATING EXTERIOR HALLWAYS</div>
+       <div class="info-bubble3">  ℹ️ IN DESKTOP,  SCROLL DOWN TO VIEW MORE PINS </div>
+
 <!-- Floating Instruction Bubble -->
 <!-- <div class="info-bubble">
   <i class="fa fa-info-circle"></i>
@@ -31,23 +34,53 @@
 --> 
 
 <div id="mapContainer" class="map-container">
-  <div id="mapInner" class="map-inner">
+  <div id="mapInner" class="map-inner"> 
 
-<div class="pin" data-x="2501" data-y="1222" data-prefill="[EXTERIOR] EXTERIOR LOBBY - Exterior Lobby"
-     data-images='["exterior-pics/elobby1.jpg","exterior-pics/elobby2.jpg","exterior-pics/elobby3.jpg"]'>
+<div class="pin" data-x="1704" data-y="2114" 
+     data-prefill="[EXTERIOR] EXTERIOR HALLWAYS - Hallway 1">
   <div class="popup">
-    <div class="popup-gallery">
-      <img src="exterior-pics/elobby1.jpg" alt="Exterior Lobby"/>
-      <img src="exterior-pics/elobby2.jpg" alt="Exterior Lobby"/>
-      <img src="exterior-pics/elobby3.jpg" alt="Exterior Lobby"/>
-    </div>
+    <img src="exterior-pics/exthallway1.jpg" alt="Hallways 1"/>
     <div class="popup-content">
-      <h3>Exterior Lobby</h3>
+      <h3>EXTERIOR HALLWAYS - Hallway 1</h3>
       <p>Click to proceed</p>
       <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
     </div>
   </div>
 </div>
+
+<div class="pin" data-x="2421" data-y="1592" 
+     data-prefill="[EXTERIOR] Exterior Hallway - Exterior Hallway 2"
+     data-images='["exterior-pics/exthallway2a.jpg","exterior-pics/exthallway2b.jpg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/exthallway2a.jpg" alt="Exterior Hallway 2 - View 1"/>
+      <img src="exterior-pics/exthallway2b.jpg" alt="Exterior Hallway 2 - View 2"/>
+    </div>
+    <div class="popup-content">
+      <h3>Exterior Hallway 2</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
+
+<div class="pin" data-x="2529" data-y="662" 
+     data-prefill="[EXTERIOR] Exterior Hallway - Exterior Hallway 3"
+     data-images='["exterior-pics/exthallway3a.jpg","exterior-pics/exthallway3b.jpg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/exthallway3a.jpg" alt="Exterior Hallway 2 - View 1"/>
+      <img src="exterior-pics/exthallway3b.jpg" alt="Exterior Hallway 2 - View 2"/>
+    </div>
+    <div class="popup-content">
+      <h3>Exterior Hallway 3</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -85,7 +118,7 @@
 
 
 <div class="title-text">
-          <h2 class="big-title"> EXTERIOR LOBBY </h2>
+          <h2 class="big-title"> PARKING AREAS  </h2>
       </div>
 <div class="form-section">
    
@@ -312,7 +345,6 @@
 <br> 
 
 
-
  <div class="section-header-text">
           <h2 class="section-title"> Fan Activities in Threshold Spaces </h2>
       </div> 
@@ -329,10 +361,9 @@
   <label><input type="checkbox" value="Taking photos/videos"> Taking photos/videos</label>
   <label><input type="checkbox" value="Exploring"> Exploring</label>
 </div>
-
+    
 <label>Others:</label>
-        </div>
-        
+</div>
 
 <input type="text" class="others" data-entry="entry.1024216442" placeholder="Please specify"><br><br>
 <!-- Question 23: Approximately how long did you stay in this place? -->
@@ -506,18 +537,15 @@
 <br>
   </div>
 
-
         <button type="submit">Submit</button>
 
       </div> <!-- ✅ closes .section -->
 
     </form>
- <div id="thankyou" style="display:none; text-align:center; padding:20px;">
-      <h3 class="section-title">RECORDED! Please close this to continue evaluating other spaces</h3>
+    <div id="thankyou" style="display:none; text-align:center; padding:20px;">
+      <h3 class="section-title">RECORED! Please close this to continue evaluating other spaces</h3>
       <p class="section-subtext">There may be more spaces to assess</p>
     </div>
-
-
   </div> <!-- ✅ closes .form-content -->
 </div> <!-- ✅ closes modal -->
 
@@ -570,7 +598,7 @@ document.getElementById('concertForm').addEventListener('submit', function(e) {
   });
 
   // Submit directly to Google Forms
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>FOOD STALLS</title>
+<title>COMFORT ROOMS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="survey.css" />
 <link rel="stylesheet" href="map-style.css" />
@@ -68,7 +68,7 @@
   <div class="form-content">
     <form id="concertForm">
       <div class="title-text">
-        <h2 class="big-title"> COMFORT ROOMS NEAR PARKING AREA </h2>
+        <h2 class="big-title"> COMFORT ROOMS  </h2>
       </div>
 
       <div class="form-section">
@@ -530,7 +530,7 @@
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse", {
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse", {
       method: "POST",
       mode: "no-cors",
       body: formData
