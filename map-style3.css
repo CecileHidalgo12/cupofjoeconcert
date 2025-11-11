@@ -1,0 +1,761 @@
+.info-bubble2 {
+  position: fixed; /* Fix it to the viewport */
+  left: 10px; /* Space from the left edge */
+  top: 10px;  /* Fixed at the top */
+  padding: 6px 12px; /* Smaller padding for a compact look */
+  background-color: #87ceeb; /* Sky blue background */
+  color: rgb(84, 110, 167); /* Corrected text color */
+  font-weight: bold;
+  font-size: 12px; /* Smaller text size */
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  z-index: 10001;
+  white-space: nowrap; /* Keep text on one line */
+  transition: all 0.3s ease; /* Smooth scaling and position changes */
+  border: 1px solid #4B9CD3; /* Light border for a clean outline */
+  max-width: 90%; /* Prevent it from taking too much space */
+  overflow: hidden; /* Ensure text doesn’t overflow */
+}
+
+/* Tablet screens (up to ~900px) */
+@media (max-width: 900px) {
+  .info-bubble2 {
+    font-size: 11px; /* Slightly smaller font */
+    padding: 5px 10px;
+    left: 8px; /* Slightly closer to edge */
+    max-width: 80%; /* More restricted width for tablets */
+    top: 5%; /* Move it slightly down for tablets */
+  }
+}
+
+/* Mobile screens (up to ~600px) */
+@media (max-width: 600px) {
+  .info-bubble2 {
+    font-size: 10px; /* Smaller font for compact mobile screens */
+    padding: 4px 8px;
+    left: 5px; /* Even closer to edge for mobile screens */
+    max-width: 75%; /* Further restrict bubble size */
+    white-space: normal; /* Allow text to wrap */
+    text-align: left; /* Align text to the left */
+    top: 5%; /* Move it slightly down for mobile screens */
+  }
+}
+
+/* Very small screens (up to ~400px) */
+@media (max-width: 400px) {
+  .info-bubble2 {
+    font-size: 9px; /* Very small font for tiny screens */
+    padding: 3px 6px;
+    left: 3px; /* Very close to the edge */
+    top: 5%; /* Keep it fixed slightly down from the top for small screens */
+    max-width: 70%; /* Limit width even further on very small screens */
+  }
+}
+
+
+
+.top-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(135deg, #02929A, #014c50);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+  z-index: 9999;
+  color: #fff;
+  font-family: "Lexend", sans-serif;
+  flex-wrap: nowrap; /* ✅ prevent wrapping */
+}
+
+/* Center title */
+.top-title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+  margin: 0 10px; /* give spacing from left/right */
+  white-space: nowrap; /* prevent breaking title into multiple lines */
+  overflow: hidden;
+  text-overflow: ellipsis; /* adds ... if text is too long */
+}
+
+/* Next button */
+.next-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: hsl(0, 0%, 100%);
+  color: #002048;
+  transition: background-color 0.2s;
+
+}
+
+.next-btn:hover {
+  background-color: #02929A;
+  color: #fff;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .top-container {
+    padding: 10px 12px;
+  }
+
+  .top-title {
+    font-size: 16px;
+  }
+
+  #zoomSlider {
+    width: 80px; /* reduce slider size */
+  }
+
+  .next-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+.top-container2 {
+  width: 90%; /* not full width, gives floating effect */
+  max-width: 600px; /* optional: limit width on large screens */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  position: fixed;
+  bottom: 10px; /* distance from bottom to appear floating */
+  left: 50%; /* center horizontally */
+  transform: translateX(-50%); /* perfect centering */
+  background: linear-gradient(135deg, #02929A, #014c50);
+  border-radius: 16px; /* fully rounded corners */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35); /* strong shadow for floating */
+  z-index: 9999;
+  color: #fff;
+  font-family: "Lexend", sans-serif;
+  flex-wrap: nowrap;
+}
+
+/* Optional: mobile tweaks */
+@media (max-width: 600px) {
+  .top-container2 {
+    width: 95%;
+    padding: 10px 16px;
+    bottom: 16px;
+  }
+}
+
+
+/* Center title */
+.top-title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+  margin: 0 10px; /* give spacing from left/right */
+  white-space: nowrap; /* prevent breaking title into multiple lines */
+  overflow: hidden;
+  text-overflow: ellipsis; /* adds ... if text is too long */
+}
+
+/* Next button */
+.next-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: hsl(0, 0%, 100%);
+  color: #002048;
+  transition: background-color 0.2s;
+
+}
+
+.next-btn:hover {
+  background-color: #02929A;
+  color: #fff;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .top-container {
+    padding: 10px 12px;
+  }
+
+  .top-title {
+    font-size: 16px;
+  }
+
+  #zoomSlider {
+    width: 80px; /* reduce slider size */
+  }
+
+  .next-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .top-container2 {
+    bottom: calc(50px); /* adjust based on mobile footer height */
+  }
+}
+
+
+ html, body {
+  overflow: auto;
+}
+
+/* Only lock scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+ *{box-sizing:border-box;font-family:"Poppins",sans-serif}
+
+.popup-gallery {
+  display: flex;
+  gap: 6px;
+}
+/* --- Fullscreen image popup --- */
+/* --- Fullscreen image popup (Revised Responsive Version) --- */
+/* --- Fullscreen image popup (Smaller, Centered Preview) --- */
+.image-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75); /* slightly lighter overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-popup.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-popup-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  max-width: 500px;   /* 💡 smaller popup width */
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-popup-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  max-height: 65vh;   /* 💡 limit height further */
+}
+
+/* Close button */
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #fff;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  transition: background 0.2s ease;
+}
+
+.close-popup:hover {
+  background: #f0f0f0;
+}
+
+/* 📱 Mobile-friendly adjustment */
+@media (max-width: 600px) {
+  .image-popup-content {
+    max-width: 90%;
+    padding: 12px;
+  }
+  .close-popup {
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+}
+
+
+.slideshow {
+  position: relative;
+  overflow-y: auto;       /* allow vertical scroll */
+  max-height: 70vh;       /* prevent overflow beyond screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: none;       /* remove any existing height limit */
+  display: block;
+}
+.preview-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.preview-gallery img {
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.preview-gallery img:hover {
+  transform: scale(1.03);
+}
+
+.popup-gallery img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* --- Make popup auto-expand if multiple images --- */
+.pin[data-images] .popup {
+  width: 180px; /* slightly wider */
+  min-height: 140px;
+}
+
+/* Larger gallery layout for multi-image pins */
+.pin[data-images] .popup-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+.slideshow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
+
+.slide-btn:hover { background: rgba(0,0,0,0.7); }
+
+.pin[data-images] .popup-gallery img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pin[data-images] .popup-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+
+.info-bubble {
+  position: fixed;
+  top: clamp(70px, 8vh, 120px);    /* auto adjusts based on screen height */
+  left: clamp(10px, 2vw, 20px);    /* auto adjusts based on screen width */
+  background: #007bff;
+  color: white;
+  width: clamp(90px, 18vw, 150px); /* auto resizes based on screen width */
+  min-height: 60px;
+  border-radius: 14px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  font-size: clamp(10px, 2vw, 13px); /* text scales with screen */
+  font-weight: 500;
+  z-index: 9999999;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.info-bubble i {
+  font-size: clamp(14px, 3vw, 22px); /* icon scales based on screen width */
+}
+
+/* ✅ ALWAYS KEEP HEADER ON TOP (fixed even when map zooms) */
+
+  .map-container{
+    position:relative;width:100%;height:calc(100vh - 60px);top:60px;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    touch-action:none;cursor:grab;z-index:20;
+  }
+
+  /* map-inner is the visual map area with a background image */
+  .map-inner{
+    position:relative;
+    width:100%;
+    max-width:1600px;
+    aspect-ratio:3509/2480;
+    background-image:url('phmap3.jpg');
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    transform-origin:center center;
+    overflow:visible;
+    will-change:transform;
+    z-index:1000;
+    background-size: 100% 100% !important; /* force the image to scale */
+  }
+/* ✅ Prevent zoom transform from breaking fixed header on mobile */
+.map-container,
+.map-inner {
+  transform-style: flat !important;
+  will-change: transform;
+  overflow: visible !important;  /* ensures header isn't clipped */
+}
+
+  .map-inner:before{
+    content:"";display:block;padding-top:calc(2480/3509*100%);width:100%;height:0;visibility:hidden
+  }
+
+  /* pins positioned absolutely inside map-inner */
+  .pin{position:absolute;transform:translate(-50%,-100%);cursor:pointer;z-index:2}
+  .pin::before{
+    content:"\f024";font-family:"Font Awesome 6 Free";font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+    background:#00bcd4;color:#fff;font-size:10px;width:18px;height:18px;border-radius:50%;
+    box-shadow:0 3px 6px rgba(0,0,0,.25)
+  }
+  .pin.clicked::before {
+  background: #008c9e !important; /* darker turquoise */
+  transform: scale(1.15);
+  box-shadow: 0 0 6px rgba(0,0,0,.35);
+}
+  .pin.answered::before{background:#4caf50}
+
+  /* popup */
+  .popup {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  width: 140px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+  color: #333;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+  .pin .popup{transform-origin:center right;transform:translateY(-50%) scale(calc(1 / var(--zoom,1)))}
+ /* ✅ Popup stays visible while hovering either the pin OR the popup */
+.pin:hover .popup,
+.pin .popup:hover,
+.pin.clicked .popup {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+  .popup img{width:100%;height:65px;object-fit:cover}
+  .popup-content{padding:6px 8px}
+  .popup h3{margin:2px 0 0;font-size:12px;font-weight:600}
+  .popup p{margin:0 0 6px;color:#777;font-size:10px}
+  .popup button{background:#007aff;color:#fff;border:0;border-radius:12px;padding:4px 8px;font-size:10px;cursor:pointer}
+  .popup button:hover{background:#0062cc}
+
+ 
+
+/* --- Zoom Slider Controls --- */
+.zoom-controls {
+  position: fixed;
+  left: 20px;
+  bottom: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 30;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.zoom-controls i {
+  color: #0288d1;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.zoom-controls i:hover {
+  color: #01579b;
+}
+
+#zoomSlider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 120px;
+  height: 6px;
+  background: #cfd8dc;
+  border-radius: 4px;
+  outline: none;
+}
+
+#zoomSlider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #0288d1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s;
+}
+
+#zoomSlider::-webkit-slider-thumb:hover {
+  background: #0277bd;
+  transform: scale(1.1);
+}
+
+
+
+  @keyframes fadeIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+  /* FIRST POPUP (Preview Modal) */
+/* ✅ Improved Responsive Preview Modal */
+.preview-modal {
+  position: fixed;
+  top: 60px; /* below header */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .28s;
+  z-index: 180;
+  padding: 16px; /* prevents edge-clipping */
+}
+
+.preview-modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.preview-content {
+  width: 100%;
+  max-width: 480px;
+  max-height: 100%;
+  background: #fff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn .25s;
+}
+
+/* ✅ Image adjusts to screen height */
+.preview-img {
+  width: 100%;
+  height: 35vh;          /* responsive height */
+  max-height: 260px;     /* limit on desktop */
+  object-fit: cover;
+}
+
+.preview-text {
+  padding: 14px 18px;
+  overflow-y: auto;      /* if content longer than space */
+  max-height: 200px;     /* keeps buttons visible */
+}
+
+.preview-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.preview-desc {
+  margin: 4px 0 12px;
+  color: #555;
+  font-size: 14px;
+}
+@media (max-height: 700px) {
+  .preview-content {
+    max-height: 90vh;      /* ensure it never overflows small screens */
+  }
+  .preview-img {
+    height: 25vh;          /* slightly smaller image for short screens */
+    max-height: 200px;
+  }
+  .preview-text {
+    max-height: 150px;     /* limit scrollable text area */
+  }
+  .preview-btns {
+    padding: 10px;
+  }
+}
+
+/* ✅ Buttons always stay visible even if text scrolls */
+.preview-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px;
+  border-top: 1px solid #eee;
+  background: #fff;
+}
+
+.close-preview,
+.proceed-preview {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-preview { background: #ddd; }
+.proceed-preview { background: #0288d1; color: white; }
+.proceed-preview:hover { background: #0072b8; }
+
+/* ✅ Mobile optimization */
+@media (max-width: 480px) {
+  .preview-content {
+    max-width: 95%;
+    border-radius: 10px;
+  }
+  .preview-img {
+    height: 30vh;
+  }
+  .preview-title { font-size: 18px; }
+  .preview-desc { font-size: 13px; }
+}
+
+.popup.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.info-bubble3 {
+  position: fixed; /* Fix it to the viewport */
+  left: 50%; /* Center horizontally */
+  top: 40px;  /* Slightly lower from top */
+  transform: translateX(-50%); /* Adjust for perfect horizontal centering */
+  padding: 6px 12px;
+  background-color: #87ceeb;
+  color: rgb(69, 0, 0);
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border: 1px solid #4B9CD3;
+  max-width: 90%;
+  overflow: hidden;
+}
+
+/* Tablet screens (up to ~900px) */
+@media (max-width: 900px) {
+  .info-bubble3 {
+    font-size: 11px;
+    padding: 5px 10px;
+    top: 7%; 
+    max-width: 80%;
+  }
+}
+
+/* Mobile screens (up to ~600px) */
+@media (max-width: 600px) {
+  .info-bubble3 {
+    font-size: 10px;
+    padding: 4px 8px;
+    max-width: 75%;
+    white-space: normal;
+    text-align: center; /* Keep text centered */
+    top: 8%;
+  }
+}
+
+/* Very small screens (up to ~400px) */
+@media (max-width: 400px) {
+  .info-bubble3 {
+    font-size: 9px;
+    padding: 3px 6px;
+    max-width: 70%;
+    top: 9%;
+  }
+}
+
+
