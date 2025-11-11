@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Queue</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 { color: #006d6f; text-align: center; margin-bottom: 15px; }
+    p { text-align: center; color: #5c5c5c; margin-bottom: 25px; }
+    .queue-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      width: 100%;
+    }
+    .queue-card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      min-height: 100px;
+      text-align: center;
+      padding: 15px 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .queue-card:hover {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0,139,139,0.25);
+    }
+    .queue-card.active {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0,139,139,0.3);
+      transform: scale(1.03);
+    }
+    .queue-card h3 { margin: 0; color: #333; }
+    .next-btn {
+      background-color: #008b8b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 40px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .next-btn:hover { background-color: #007373; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<h1>Queue Type</h1>
+<p>Select the type of queue you went through.</p>
+
+<div class="queue-options">
+  <div class="queue-card" onclick="toggleCard(this)" data-page="greengate.html"><h3>Green Gate</h3></div>
+  <div class="queue-card" onclick="toggleCard(this)" data-page="yellowgate.html"><h3>Yellow Gate</h3></div>
+  <div class="queue-card" onclick="toggleCard(this)" data-page="redgate.html"><h3>Red Gate</h3></div>
+</div>
+
+<button class="next-btn" onclick="goNext()">Next</button>
+
+<script>
+  function toggleCard(card) {
+    document.querySelectorAll('.queue-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  }
+
+  function getUserIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("userId");
+  }
+
+  function goNext() {
+    const selectedCard = document.querySelector('.queue-card.active');
+    if (!selectedCard) {
+      alert("Please select a queue type.");
+      return;
+    }
+
+    const selectedQueue = selectedCard.dataset.page;
+
+    // Get previously selected pages
+    const selectedPages = JSON.parse(localStorage.getItem("selectedPages") || "[]");
+    let currentIndex = parseInt(localStorage.getItem("currentPageIndex") || "0");
+
+    // Insert the queue page right after "queueing.html"
+    const queueingIndex = selectedPages.indexOf("queueing.html");
+    if (queueingIndex !== -1) {
+      selectedPages.splice(queueingIndex + 1, 0, selectedQueue);
+    } else {
+      selectedPages.splice(currentIndex, 0, selectedQueue);
+    }
+
+    localStorage.setItem("selectedPages", JSON.stringify(selectedPages));
+
+    // Move to next page in the list
+    currentIndex++;
+    localStorage.setItem("currentPageIndex", currentIndex);
+
+    const nextPage = selectedPages[currentIndex];
+    const userId = getUserIdFromUrl();
+    window.location.href = userId ? `${nextPage}?userId=${encodeURIComponent(userId)}` : nextPage;
+  }
+</script>
+
+</body>
+</html>

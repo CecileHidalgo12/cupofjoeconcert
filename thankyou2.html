@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raffle Entry Received</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1E90FF;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  .check-icon {
+    width: 85px;
+    height: 85px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .check-icon svg {
+    width: 42px;
+    height: 42px;
+    fill: #1E90FF;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.8rem;
+    opacity: 0.95;
+    margin: 0.5rem auto;
+    max-width: 250px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .userid-box {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .primary-btn,
+  .outline-btn {
+    width: 75%;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .primary-btn {
+    margin-top: 1rem;
+    background: white;
+    color: #1E90FF;
+    border: none;
+  }
+
+  .outline-btn {
+    margin-top: 0.5rem;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ✅ Check Icon -->
+<div class="check-icon">
+  <svg viewBox="0 0 24 24">
+    <path d="M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.4-1.4z" />
+  </svg>
+</div>
+
+<h1>Raffle Entry Submitted!</h1>
+
+<p>Thank you for participating!<br>
+We have received your raffle entry.</p>
+
+<p><strong>Screenshot this screen as proof of participation.</strong></p>
+
+<!-- User ID Display -->
+<div class="userid-box" id="userIdDisplay">Loading...</div>
+
+<button class="primary-btn" onclick="window.location.href='choose.html'">
+  Done
+</button>
+
+<script>
+  // Safely get and display userId from URL
+  const params = new URLSearchParams(window.location.search);
+  const userId = (params.get("userId") || "").trim();
+  const display = document.getElementById("userIdDisplay");
+
+  display.textContent = userId 
+      ? "User ID: " + userId 
+      : "User ID Missing";
+</script>
+
+</body>
+</html>

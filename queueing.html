@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title> QUEUEING</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="map-style.css" />
+<link rel="stylesheet" href="survey.css" />
+</head>
+<body>
+<div class="top-container">
+  
+     <div class="top-title">                         </div>
+    <div class="zoom-controls">
+  <i class="fa fa-search-minus"></i>
+  
+  <input id="zoomSlider" type="range" min="1" max="3" step="0.1" value="1"/>
+  <i class="fa fa-search-plus"></i>
+
+</div>
+  
+    <button id="nextBtn" class="next-btn">Next</button>
+  </div>
+   <div class="info-bubble2">  ℹ️YOU ARE EVALUATING QUEUEING</div>
+<!-- Floating Instruction Bubble -->
+<!-- <div class="info-bubble">
+  <i class="fa fa-info-circle"></i>
+  <span>Click on the Spaces You've Encountered</span>
+</div>
+--> 
+<div id="mapContainer" class="map-container">
+  <div id="mapInner" class="map-inner">
+ <div class="pin" data-x="2290" data-y="1105" data-prefill="[EXTERIOR] Queue - VIP Queue 1 (Left Side)" 
+       data-images='["exterior-pics/qvip1.jpg","exterior-pics/qvip2.jpg"]'>
+      <div class="popup">
+        <div class="popup-gallery">
+          <img src="exterior-pics/qvip1.JPG" alt="VIP Queue 1 (Left Side)"/>
+          <img src="exterior-pics/qvip2.jpg" alt="VIP Queue 1 (Left Side)"/>
+        </div>
+        <div class="popup-content">
+          <h3>VIP Queue 1 (Left Side)</h3>
+          <p>Click to proceed</p>
+          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+        </div>
+      </div>
+    </div>
+<div class="pin"  data-x="2740" data-y="1105" data-prefill="[EXTERIOR] Queue - VIP Queue 2 (Right Side)" 
+       data-images='["exterior-pics/qvip1a.png","exterior-pics/qvip1b.jpg"]'>
+      <div class="popup">
+        <div class="popup-gallery">
+          <img src="exterior-pics/qvip1a.png" alt="VIP Queue 1 (Right Side)"/>
+          <img src="exterior-pics/qvip1b.jpg" alt="VIP Queue 1 (Right Side)"/>
+        </div>
+        <div class="popup-content">
+          <h3>Queue - VIP Queue 2 (Right Side)</h3>
+          <p>Click to proceed</p>
+          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+        </div>
+      </div>
+    </div>
+
+ <div class="pin" data-x="2660" data-y="1357" data-prefill="[EXTERIOR] Queue - Lowerbox Queue 1 (Right Side)" >
+      <div class="popup">
+        <img src="exterior-pics/qlowerbox1.jpg" alt="Lowerbox Queue 1 (Right Side)"/>
+        <div class="popup-content">
+          <h3>Lowerbox Queue 1 (Right Side)</h3>
+          <p>Click to proceed</p>
+          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+        </div>
+      </div>
+    </div>
+
+ <div class="pin" data-x="2349" data-y="1316" data-prefill="[EXTERIOR] Queue - Lowerbox Queue 2 (Left Side)" >
+      <div class="popup">
+        <img src="exterior-pics/qlowerbox2.jpg" alt="Lowerbox Queue 2 (Left Side)"/>
+        <div class="popup-content">
+          <h3>Lowerbox Queue 2 (Left Side)</h3>
+          <p>Click to proceed</p>
+          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+        </div>
+      </div>
+    </div>
+   
+<div class="pin" data-x="2505" data-y="1520" data-prefill="[EXTERIOR] Queue - Upper Box Queue" 
+     data-images='["exterior-pics/qupb1.jpg","exterior-pics/qupb2.jpg","exterior-pics/qupb3.jpg","exterior-pics/qupb4.jpg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/qupb1.jpg" alt="Upper Box Queue 1"/>
+      <img src="exterior-pics/qupb2.jpg" alt="Upper Box Queue 2"/>
+      <img src="exterior-pics/qupb3.jpg" alt="Upper Box Queue 3"/>
+      <img src="exterior-pics/qupb4.jpg" alt="Upper Box Queue 4"/>
+    </div>
+    <div class="popup-content">
+      <h3>Queue - Upper Box Queue</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
+
+
+
+  </div> <!-- end of mapInner -->
+</div> <!-- end of mapContainer -->
+
+
+<!-- FIRST POPUP: PREVIEW IMAGE & PROCEED -->
+<div id="previewModal" class="preview-modal">
+  <div class="preview-content">
+    <div class="slideshow">
+      <button class="slide-btn prev"><i class="fa fa-chevron-left"></i></button>
+      <img id="previewImg" class="preview-img" src="" alt="">
+      <button class="slide-btn next"><i class="fa fa-chevron-right"></i></button>
+    </div>
+    <div class="preview-text">
+      <h2 id="previewTitle" class="preview-title"></h2>
+      <p class="preview-desc"> CLICK IMAGE TO SEE FULL PHOTO </p>
+    </div>
+    <div class="preview-btns">
+      <button id="closePreview" class="close-preview">Close</button>
+      <button id="proceedPreview" class="proceed-preview">Proceed</button>
+    </div>
+  </div>
+</div>
+
+<div id="formModal" class="form-modal">
+   
+  <div class="form-content">
+     <button id="closeForm" class="close-form"><i class="fa fa-times"></i></button>
+
+    <form id="concertForm">
+
+
+
+<div class="title-text">
+          <h2 class="big-title"> Queueing  </h2>
+      </div>
+<div class="form-section">
+   
+   <div class="section-header-text">
+          <h2 class="section-title"> USER INFO  </h2>
+          <p class="section-description"> These are the respondent details for this part of the survey</p>
+      </div>
+
+        <label class="userID"> USERID </label><br>
+        <input type="text" id="userid" name="entry.1098192972" required readonly>
+
+        <br> 
+
+        <label class="userID"> SPACE DESCRIPTION </label><br>
+        <input type="text" id="space" name="entry.1645044953" required readonly>
+</div>
+<div class="form-section">
+   
+   <h3 class="text-title"> Fan Experience and Perceptions in Threshold Spaces </h3>
+
+<div class="section-header-text">
+    <h2 class="section-title"> Physical Attributes Ratings  </h2>
+    <p class="section-description">Instructions: Based on this space, please rate the statements below on a 1–5 scale (1 being strongly disagree and 5 being strongly agree).</p>
+</div>
+
+<!-- Question 1 -->
+<label> Entrances and exits were easy to find</label>
+<div class="options">
+  <input type="radio" name="entry.1172031730" value="1" required> 1
+  <input type="radio" name="entry.1172031730" value="2"> 2
+  <input type="radio" name="entry.1172031730" value="3"> 3
+  <input type="radio" name="entry.1172031730" value="4"> 4
+  <input type="radio" name="entry.1172031730" value="5"> 5
+</div>
+<br>
+
+<!-- Question 2 -->
+<label> Pathways allowed smooth movement</label>
+<div class="options">
+  <input type="radio" name="entry.979883946" value="1" required> 1
+  <input type="radio" name="entry.979883946" value="2"> 2
+  <input type="radio" name="entry.979883946" value="3"> 3
+  <input type="radio" name="entry.979883946" value="4"> 4
+  <input type="radio" name="entry.979883946" value="5"> 5
+</div>
+<br>
+
+<!-- Question 3 -->
+<label> The layout was easy to navigate</label>
+<div class="options">
+  <input type="radio" name="entry.1268768629" value="1" required> 1
+  <input type="radio" name="entry.1268768629" value="2"> 2
+  <input type="radio" name="entry.1268768629" value="3"> 3
+  <input type="radio" name="entry.1268768629" value="4"> 4
+  <input type="radio" name="entry.1268768629" value="5"> 5
+</div>
+<br>
+
+<!-- Question 4 -->
+<label> The space handled large crowds well</label>
+<div class="options">
+  <input type="radio" name="entry.1004649558" value="1" required> 1
+  <input type="radio" name="entry.1004649558" value="2"> 2
+  <input type="radio" name="entry.1004649558" value="3"> 3
+  <input type="radio" name="entry.1004649558" value="4"> 4
+  <input type="radio" name="entry.1004649558" value="5"> 5
+</div>
+<br>
+
+<!-- Question 5 -->
+<label> The space felt comfortable in size</label>
+<div class="options">
+  <input type="radio" name="entry.764708744" value="1" required> 1
+  <input type="radio" name="entry.764708744" value="2"> 2
+  <input type="radio" name="entry.764708744" value="3"> 3
+  <input type="radio" name="entry.764708744" value="4"> 4
+  <input type="radio" name="entry.764708744" value="5"> 5
+</div>
+<br>
+
+<!-- Question 6 -->
+<label> The entryways, passages were properly sized</label>
+<div class="options">
+  <input type="radio" name="entry.1975627061" value="1" required> 1
+  <input type="radio" name="entry.1975627061" value="2"> 2
+  <input type="radio" name="entry.1975627061" value="3"> 3
+  <input type="radio" name="entry.1975627061" value="4"> 4
+  <input type="radio" name="entry.1975627061" value="5"> 5
+</div>
+<br>
+
+<!-- Question 7 -->
+<label> Movement felt natural and easy</label>
+<div class="options">
+  <input type="radio" name="entry.1906470663" value="1" required> 1
+  <input type="radio" name="entry.1906470663" value="2"> 2
+  <input type="radio" name="entry.1906470663" value="3"> 3
+  <input type="radio" name="entry.1906470663" value="4"> 4
+  <input type="radio" name="entry.1906470663" value="5"> 5
+</div>
+<br>
+
+<!-- Question 8 -->
+<label> The area had enough shade</label>
+<div class="options">
+  <input type="radio" name="entry.1456093232" value="1" required> 1
+  <input type="radio" name="entry.1456093232" value="2"> 2
+  <input type="radio" name="entry.1456093232" value="3"> 3
+  <input type="radio" name="entry.1456093232" value="4"> 4
+  <input type="radio" name="entry.1456093232" value="5"> 5
+</div>
+<br>
+
+<!-- Question 9 -->
+<label> It was protected from rain or heat</label>
+<div class="options">
+  <input type="radio" name="entry.2024301183" value="1" required> 1
+  <input type="radio" name="entry.2024301183" value="2"> 2
+  <input type="radio" name="entry.2024301183" value="3"> 3
+  <input type="radio" name="entry.2024301183" value="4"> 4
+  <input type="radio" name="entry.2024301183" value="5"> 5
+</div>
+<br>
+
+<!-- Question 10 -->
+<label> Airflow was comfortable</label>
+<div class="options">
+  <input type="radio" name="entry.1603408454" value="1" required> 1
+  <input type="radio" name="entry.1603408454" value="2"> 2
+  <input type="radio" name="entry.1603408454" value="3"> 3
+  <input type="radio" name="entry.1603408454" value="4"> 4
+  <input type="radio" name="entry.1603408454" value="5"> 5
+</div>
+<br>
+
+<!-- Question 11 -->
+<label> The temperature felt right</label>
+<div class="options">
+  <input type="radio" name="entry.936528694" value="1" required> 1
+  <input type="radio" name="entry.936528694" value="2"> 2
+  <input type="radio" name="entry.936528694" value="3"> 3
+  <input type="radio" name="entry.936528694" value="4"> 4
+  <input type="radio" name="entry.936528694" value="5"> 5
+</div>
+<br>
+
+<!-- Question 12 -->
+<label> The presence of trees, greenery, or shading elements improved comfort</label>
+<div class="options">
+  <input type="radio" name="entry.1350977727" value="1" required> 1
+  <input type="radio" name="entry.1350977727" value="2"> 2
+  <input type="radio" name="entry.1350977727" value="3"> 3
+  <input type="radio" name="entry.1350977727" value="4"> 4
+  <input type="radio" name="entry.1350977727" value="5"> 5
+</div>
+<br>
+
+<!-- Question 13 -->
+<label> The space looked visually pleasing</label>
+<div class="options">
+  <input type="radio" name="entry.1314082606" value="1" required> 1
+  <input type="radio" name="entry.1314082606" value="2"> 2
+  <input type="radio" name="entry.1314082606" value="3"> 3
+  <input type="radio" name="entry.1314082606" value="4"> 4
+  <input type="radio" name="entry.1314082606" value="5"> 5
+</div>
+<br>
+
+<!-- Question 14 -->
+<label> Lighting improved comfort and mood</label>
+<div class="options">
+  <input type="radio" name="entry.1056043760" value="1" required> 1
+  <input type="radio" name="entry.1056043760" value="2"> 2
+  <input type="radio" name="entry.1056043760" value="3"> 3
+  <input type="radio" name="entry.1056043760" value="4"> 4
+  <input type="radio" name="entry.1056043760" value="5"> 5
+</div>
+<br>
+
+<!-- Question 15 -->
+<label> Seating areas or resting spots were well-integrated and inviting</label>
+<div class="options">
+  <input type="radio" name="entry.1416012163" value="1" required> 1
+  <input type="radio" name="entry.1416012163" value="2"> 2
+  <input type="radio" name="entry.1416012163" value="3"> 3
+  <input type="radio" name="entry.1416012163" value="4"> 4
+  <input type="radio" name="entry.1416012163" value="5"> 5
+</div>
+<br>
+
+<!-- Question 16 -->
+<label> The space supported fan activities (chants, photos, etc.)</label>
+<div class="options">
+  <input type="radio" name="entry.1912755955" value="1" required> 1
+  <input type="radio" name="entry.1912755955" value="2"> 2
+  <input type="radio" name="entry.1912755955" value="3"> 3
+  <input type="radio" name="entry.1912755955" value="4"> 4
+  <input type="radio" name="entry.1912755955" value="5"> 5
+</div>
+<br>
+
+<!-- Question 17 -->
+<label> I could see where to go next</label>
+<div class="options">
+  <input type="radio" name="entry.1980930457" value="1" required> 1
+  <input type="radio" name="entry.1980930457" value="2"> 2
+  <input type="radio" name="entry.1980930457" value="3"> 3
+  <input type="radio" name="entry.1980930457" value="4"> 4
+  <input type="radio" name="entry.1980930457" value="5"> 5
+</div>
+<br>
+
+<!-- Question 18 -->
+<label> I could recognize available activities or services</label>
+<div class="options">
+  <input type="radio" name="entry.193331889" value="1" required> 1
+  <input type="radio" name="entry.193331889" value="2"> 2
+  <input type="radio" name="entry.193331889" value="3"> 3
+  <input type="radio" name="entry.193331889" value="4"> 4
+  <input type="radio" name="entry.193331889" value="5"> 5
+</div>
+<br>
+
+<!-- Question 19 -->
+<label> I could anticipate what’s beyond this space</label>
+<div class="options">
+  <input type="radio" name="entry.1576276173" value="1" required> 1
+  <input type="radio" name="entry.1576276173" value="2"> 2
+  <input type="radio" name="entry.1576276173" value="3"> 3
+  <input type="radio" name="entry.1576276173" value="4"> 4
+  <input type="radio" name="entry.1576276173" value="5"> 5
+</div>
+<br>
+
+<!-- Question 20 -->
+<label> Signs and cues were visible from afar</label>
+<div class="options">
+  <input type="radio" name="entry.1447356764" value="1" required> 1
+  <input type="radio" name="entry.1447356764" value="2"> 2
+  <input type="radio" name="entry.1447356764" value="3"> 3
+  <input type="radio" name="entry.1447356764" value="4"> 4
+  <input type="radio" name="entry.1447356764" value="5"> 5
+</div>
+
+
+<div class="form-divider"></div>
+
+
+ <div class="section-header-text">
+          <h2 class="section-title"> Fan Activities in Threshold Spaces </h2>
+      </div> 
+        <div class="checklist" data-entry="entry.1024216442">
+      
+ <label>Activities you did here (select all that apply)</label>
+<div class="checklist1"> 
+  <label><input type="checkbox" value="Waiting"> Waiting</label>
+  <label><input type="checkbox" value="Queueing"> Queueing</label>
+  <label><input type="checkbox" value="Buying merchandise/food/drinks"> Buying merchandise/food/drinks</label>
+  <label><input type="checkbox" value="Meeting with friends/fans"> Meeting with friends/fans</label>
+  <label><input type="checkbox" value="Participating in fan projects"> Participating in fan projects</label>
+  <label><input type="checkbox" value="Resting"> Resting</label>
+  <label><input type="checkbox" value="Taking photos/videos"> Taking photos/videos</label>
+  <label><input type="checkbox" value="Exploring"> Exploring</label>
+</div>
+
+<label>Others:</label>
+</div>
+
+<input type="text" class="others" data-entry="entry.1024216442" placeholder="Please specify"><br><br>
+<!-- Question 23: Approximately how long did you stay in this place? -->
+<label>Approximately how long did you stay in this place?</label><br>
+<div class="options2">
+  <label><input type="radio" name="entry.1144414676" value="Less than 10 mins" required> Less than 10 mins</label>
+  <label><input type="radio" name="entry.1144414676" value="10-30 mins"> 10-30 mins</label>
+  <label><input type="radio" name="entry.1144414676" value="30-60 mins"> 30-60 mins</label>
+  <label><input type="radio" name="entry.1144414676" value="More than one hour"> More than one hour</label>
+</div>
+<br> 
+<!-- Question 24: Enjoyable or memorable experiences -->
+<label for="q24"> What did you find enjoyable or memorable while staying here?</label><br>
+<textarea name="entry.1061310550" id="q24" rows="3" cols="50" required></textarea><br>
+
+<!-- Question 25: Challenges or difficulties -->
+<label for="q25"> What challenges or difficulties did you experience in this space?</label><br>
+<textarea name="entry.1410239538" id="q25" rows="3" cols="50" required></textarea><br>
+
+<!-- Question 26: Design improvements -->
+<label for="q26"> What design improvements (e.g., seating, shading, signage, circulation, entertainment) would make your experience better in this space?</label><br>
+<textarea name="entry.1195906890" id="q26" rows="3" cols="50" required></textarea><br>
+
+<div class="form-divider"></div>
+    <div class="section-header-text">
+          <h2 class="section-title"> Fan Behavioral Outcomes and Emotional Buildup while in the Threshold Space </h2>
+          <p class="section-description"> Instruction: Rate your experience on each threshold space you encountered from 1-5 (1 = strongly disagree to 5 = strongly agree)</p>
+</p>
+      </div>
+      <!-- Question 27 -->
+       <div class="form-divider"></div>
+<h2 class="section-subtext"> BEHAVIORAL OUTCOMES </h2>
+        <p class = "question-text"> PHYSICAL COMFORT AND SAFETY</p>
+  <div class="linear-scale">
+<label> Experienced stress or discomfort:</label>
+<div class="options">
+  <input type="radio" name="entry.1543803530" value="1" required> 1
+  <input type="radio" name="entry.1543803530" value="2"> 2
+  <input type="radio" name="entry.1543803530" value="3"> 3
+  <input type="radio" name="entry.1543803530" value="4"> 4
+  <input type="radio" name="entry.1543803530" value="5"> 5
+</div>
+<br>
+
+<!-- Question 28 -->
+<label> Looked for shaded or less crowded area:</label>
+<div class="options">
+  <input type="radio" name="entry.613876254" value="1" required> 1
+  <input type="radio" name="entry.613876254" value="2"> 2
+  <input type="radio" name="entry.613876254" value="3"> 3
+  <input type="radio" name="entry.613876254" value="4"> 4
+  <input type="radio" name="entry.613876254" value="5"> 5
+</div>
+<br>
+ <p class = "question-text">  ORGANIZATION </p>
+
+<!-- Question 29 -->
+<label> I experienced confusion or disorientation while in the space:</label>
+<div class="options">
+  <input type="radio" name="entry.1396454786" value="1" required> 1
+  <input type="radio" name="entry.1396454786" value="2"> 2
+  <input type="radio" name="entry.1396454786" value="3"> 3
+  <input type="radio" name="entry.1396454786" value="4"> 4
+  <input type="radio" name="entry.1396454786" value="5"> 5
+</div>
+<br>
+
+<!-- Question 30 -->
+<label> Saw people cutting lines or breaking order, which affected my experience:</label>
+<div class="options">
+  <input type="radio" name="entry.702385915" value="1" required> 1
+  <input type="radio" name="entry.702385915" value="2"> 2
+  <input type="radio" name="entry.702385915" value="3"> 3
+  <input type="radio" name="entry.702385915" value="4"> 4
+  <input type="radio" name="entry.702385915" value="5"> 5
+</div>
+<br>
+<p class = "question-text">  SOCIAL INTERACTION </p>
+<!-- Question 31 -->
+<label> Interacted socially with fans:</label>
+<div class="options">
+  <input type="radio" name="entry.2124937577" value="1" required> 1
+  <input type="radio" name="entry.2124937577" value="2"> 2
+  <input type="radio" name="entry.2124937577" value="3"> 3
+  <input type="radio" name="entry.2124937577" value="4"> 4
+  <input type="radio" name="entry.2124937577" value="5"> 5
+</div>
+<br>
+
+<!-- Question 32 -->
+<label> Felt a strong sense of belonging with fellow fans:</label>
+<div class="options">
+  <input type="radio" name="entry.357909868" value="1" required> 1
+  <input type="radio" name="entry.357909868" value="2"> 2
+  <input type="radio" name="entry.357909868" value="3"> 3
+  <input type="radio" name="entry.357909868" value="4"> 4
+  <input type="radio" name="entry.357909868" value="5"> 5
+</div>
+<br>
+
+<!-- Question 33 -->
+<label> Made new friends while waiting:</label>
+<div class="options">
+  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="1" required> 1
+  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="2"> 2
+  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="3"> 3
+  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="4"> 4
+  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="5"> 5
+</div>
+<br>
+
+<div class="section-header-text">
+          <h2 class="section-title"> Emotional Buildup and Anticipation (Pre-event) </h2>
+          <p class="section-description"> Instruction: Rate your emotional buildup and anticipation before the actual event on each threshold space you encountered from 1-5 (1 = strongly disagree to 5 = strongly agree)</p>
+</p>
+      </div>
+<!-- Question 34 -->
+ <h2 class="section-subtext"> EMOTIONAL BUILDING AND ANTICIPATION </h2>
+<label> This space increased my excitement for the concert</label>
+<div class="options">
+  <input type="radio" name="entry.2084468821" value="1" required> 1
+  <input type="radio" name="entry.2084468821" value="2"> 2
+  <input type="radio" name="entry.2084468821" value="3"> 3
+  <input type="radio" name="entry.2084468821" value="4"> 4
+  <input type="radio" name="entry.2084468821" value="5"> 5
+</div>
+<br>
+
+<!-- Question 35 -->
+<label> This space helped build a “concert mood.”</label>
+<div class="options">
+  <input type="radio" name="entry.170216511" value="1" required> 1
+  <input type="radio" name="entry.170216511" value="2"> 2
+  <input type="radio" name="entry.170216511" value="3"> 3
+  <input type="radio" name="entry.170216511" value="4"> 4
+  <input type="radio" name="entry.170216511" value="5"> 5
+</div>
+<br>
+
+<!-- Question 36 -->
+<label> I felt part of a shared fan community here</label>
+<div class="options">
+  <input type="radio" name="entry.1123801056" value="1" required> 1
+  <input type="radio" name="entry.1123801056" value="2"> 2
+  <input type="radio" name="entry.1123801056" value="3"> 3
+  <input type="radio" name="entry.1123801056" value="4"> 4
+  <input type="radio" name="entry.1123801056" value="5"> 5
+</div>
+<br>
+
+<!-- Question 37 -->
+<label> I felt bored and impatient</label>
+<div class="options">
+  <input type="radio" name="entry.1403862084" value="1" required> 1
+  <input type="radio" name="entry.1403862084" value="2"> 2
+  <input type="radio" name="entry.1403862084" value="3"> 3
+  <input type="radio" name="entry.1403862084" value="4"> 4
+  <input type="radio" name="entry.1403862084" value="5"> 5
+</div>
+<br>
+
+<!-- Question 38 -->
+<label> I felt that my mood shifted to concert mode</label>
+<div class="options">
+  <input type="radio" name="entry.1519805222" value="1" required> 1
+  <input type="radio" name="entry.1519805222" value="2"> 2
+  <input type="radio" name="entry.1519805222" value="3"> 3
+  <input type="radio" name="entry.1519805222" value="4"> 4
+  <input type="radio" name="entry.1519805222" value="5"> 5
+</div>
+<br>
+  </div>
+ 
+        <button type="submit">Submit</button>
+
+      </div> <!-- ✅ closes .section -->
+
+    </form>
+
+    <div id="thankyou" style="display:none; text-align:center; padding:20px;">
+      <h3 class="section-title">Your response has been recorded!</h3>
+      <p class="section-subtext">Close this to continue</p>
+    </div>
+
+  </div> <!-- ✅ closes .form-content -->
+</div> <!-- ✅ closes modal -->
+
+
+<!-- FULLSCREEN IMAGE POPUP -->
+<div id="imagePopup" class="image-popup">
+  <div class="image-popup-content">
+    <button class="close-popup"><i class="fa fa-times"></i></button>
+    <img id="popupImg" src="" alt="Full View">
+  </div>
+</div>
+<script>
+    document.querySelector("form")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Inform parent map script if needed
+  window.parent?.postMessage?.("formSubmitted", "*");
+});
+
+document.getElementById('concertForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Handle checklists with optional "Others"
+  const checklists = document.querySelectorAll('.checklist');
+  checklists.forEach(container => {
+    const entryId = container.dataset.entry;
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    const selected = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    const othersInput = document.querySelector(`.others[data-entry="${entryId}"]`);
+    if (othersInput && othersInput.value.trim() !== '') {
+      selected.push(othersInput.value.trim());
+    }
+
+    formData.set(entryId, selected.join(', '));
+  });
+
+  // Submit directly to Google Forms
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  })
+ .then(() => {
+  form.style.display = 'none';
+  document.getElementById('thankyou').style.display = 'block';
+
+  // ✅ Mark the active pin as answered (turn it green)
+  const activePin = document.querySelector('[data-active-pin="true"]');
+  if (activePin) {
+    const label = activePin.dataset.prefill || "Unknown";
+    markPinAnswered(label); // use your existing helper
+    delete activePin.dataset.activePin;
+  }
+})
+
+  .catch(err => console.error(err));
+});
+const mapInner=document.getElementById('mapInner');
+const mapContainer=document.getElementById('mapContainer');
+const pins=document.querySelectorAll('.pin');
+const zoomSlider=document.getElementById('zoomSlider');
+const formModal=document.getElementById('formModal');
+const formIframe=formModal.querySelector('iframe');
+const closeForm=document.getElementById('closeForm');
+
+
+const IMG_W=3509, IMG_H=2480;
+function dbg(...args){console.log('[map-debug]',...args)}
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("userId");
+console.log("User ID:", userId);
+function positionPins(){
+  const w=mapInner.clientWidth,h=mapInner.clientHeight;
+  pins.forEach(pin=>{
+    const x=parseFloat(pin.dataset.x),y=parseFloat(pin.dataset.y);
+    const leftPct=(x/IMG_W)*100,topPct=(y/IMG_H)*100;
+    pin.style.left=`${leftPct}%`;
+    pin.style.top=`${topPct}%`;
+  });
+}
+window.addEventListener('load',positionPins);
+window.addEventListener('resize',positionPins);
+window.addEventListener('orientationchange',positionPins);
+
+let zoom=1,isDragging=false,startX=0,startY=0,offsetX=0,offsetY=0;
+function setTransform(){
+  mapInner.style.transform=`translate3d(${offsetX}px,${offsetY}px,0) scale(${zoom})`;
+  mapInner.style.setProperty('--zoom',zoom);
+}
+/* ✅ PINCH TO ZOOM (mobile support) */
+let initialPinchDistance = null;
+let lastZoom = zoom;
+
+mapContainer.addEventListener("touchmove", function (e) {
+  if (e.touches.length === 2) {
+    e.preventDefault();
+
+    const touch1 = e.touches[0];
+    const touch2 = e.touches[1];
+
+    const dx = touch1.pageX - touch2.pageX;
+    const dy = touch1.pageY - touch2.pageY;
+    const currentDistance = Math.hypot(dx, dy);
+
+    if (initialPinchDistance === null) {
+      initialPinchDistance = currentDistance;
+      lastZoom = zoom;
+      return;
+    }
+
+    const pinchRatio = currentDistance / initialPinchDistance;
+    zoom = Math.min(3, Math.max(1, lastZoom * pinchRatio)); // clamp between 1–3
+
+    zoomSlider.value = zoom;
+    setTransform();
+  }
+}, { passive: false });
+
+mapContainer.addEventListener("touchend", function (e) {
+  if (e.touches.length < 2) {
+    initialPinchDistance = null; // reset pinch memory
+  }
+});
+
+zoomSlider.addEventListener('input',()=>{
+  zoom=parseFloat(zoomSlider.value);
+  if(zoom<=1){offsetX=0;offsetY=0;}
+  setTransform();
+});
+
+document.querySelector('.fa-search-plus').addEventListener('click', () => {
+  zoom = Math.min(3, zoom + 0.1);
+  zoomSlider.value = zoom;
+  setTransform();
+});
+
+document.querySelector('.fa-search-minus').addEventListener('click', () => {
+  zoom = Math.max(1, zoom - 0.1);
+  zoomSlider.value = zoom;
+  setTransform();
+});
+
+function getCoords(e){return e.touches?{x:e.touches[0].clientX,y:e.touches[0].clientY}:{x:e.clientX,y:e.clientY}}
+function startDrag(e){if(zoom<=1)return;const c=getCoords(e);isDragging=true;startX=c.x-offsetX;startY=c.y-offsetY;mapContainer.style.cursor='grabbing'}
+function moveDrag(e){if(!isDragging)return;const c=getCoords(e);offsetX=c.x-startX;offsetY=c.y-startY;setTransform()}
+function endDrag(){isDragging=false;mapContainer.style.cursor='grab'}
+mapContainer.addEventListener('mousedown',startDrag);
+mapContainer.addEventListener('mousemove',moveDrag);
+mapContainer.addEventListener('mouseup',endDrag);
+mapContainer.addEventListener('mouseleave',endDrag);
+mapContainer.addEventListener('touchstart',startDrag,{passive:false});
+mapContainer.addEventListener('touchmove',moveDrag,{passive:false});
+mapContainer.addEventListener('touchend',endDrag);
+
+
+
+let watchInterval=null;
+function openFormForPin(pin) {
+  pin.dataset.activePin = "true";
+  const label = pin.dataset.prefill || "Unknown";
+
+  // Prefill form fields inside the modal
+  const userField = document.getElementById("userid");
+  const spaceField = document.getElementById("space");
+  if (userField) userField.value = userId || "";
+  if (spaceField) spaceField.value = label;
+
+  formModal.classList.add("active");
+}
+
+// FIRST: Show preview popup before form
+const previewModal = document.getElementById("previewModal");
+const previewImg = document.getElementById("previewImg");
+const previewTitle = document.getElementById("previewTitle");
+
+let currentSlide = 0;
+let currentImages = [];
+const prevBtn = document.querySelector(".slide-btn.prev");
+const nextBtn = document.querySelector(".slide-btn.next");
+
+function updateSlideButtons() {
+  if (currentImages.length <= 1) {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+  } else {
+    prevBtn.style.display = "flex";
+    nextBtn.style.display = "flex";
+  }
+}
+
+prevBtn.addEventListener("click", () => {
+  if (currentImages.length > 1) {
+    currentSlide = (currentSlide - 1 + currentImages.length) % currentImages.length;
+    previewImg.src = currentImages[currentSlide];
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (currentImages.length > 1) {
+    currentSlide = (currentSlide + 1) % currentImages.length;
+    previewImg.src = currentImages[currentSlide];
+  }
+});
+
+document.querySelectorAll('.answer-btn').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const pin = e.target.closest('.pin');
+    if(!pin) return;
+
+    // get title and images
+    const title = pin.querySelector(".popup h3").innerText;
+    const images = JSON.parse(pin.dataset.images || '[]');
+
+    // fallback if no gallery defined
+    currentImages = images.length ? images : [pin.querySelector(".popup img").src];
+    currentSlide = 0;
+
+    previewTitle.innerText = title;
+    previewImg.src = currentImages[currentSlide];
+    updateSlideButtons();  
+    previewModal.classList.add("active");
+// --- Fullscreen image popup ---
+const imagePopup = document.getElementById("imagePopup");
+const popupImg = document.getElementById("popupImg");
+const closePopupBtn = imagePopup.querySelector(".close-popup");
+
+// When clicking the slideshow image
+previewImg.addEventListener("click", () => {
+  popupImg.src = previewImg.src;
+  imagePopup.classList.add("active");
+});
+
+// Close popup on button click or background click
+closePopupBtn.addEventListener("click", () => {
+  imagePopup.classList.remove("active");
+});
+
+imagePopup.addEventListener("click", (e) => {
+  if (e.target === imagePopup) {
+    imagePopup.classList.remove("active");
+  }
+});
+    pin.dataset.activePin = "true";
+  });
+});
+
+// slideshow controls
+
+
+// Close preview modal
+document.getElementById("closePreview").addEventListener("click", () => {
+  previewModal.classList.remove("active");
+});
+
+// Proceed → open form modal
+document.getElementById("proceedPreview").addEventListener("click", () => {
+  previewModal.classList.remove("active");
+
+  const active = document.querySelector('[data-active-pin="true"]');
+  if (active) openFormForPin(active);
+});
+
+const infoBubble = document.querySelector(".info-bubble");
+
+pins.forEach(pin => {
+  pin.addEventListener("click", e => {
+    if (e.target.closest(".answer-btn")) return;
+    e.stopPropagation();
+
+    const isAlreadyOpen = pin.classList.contains("clicked");
+
+    // close all popups
+    pins.forEach(p => p.classList.remove("clicked"));
+
+    if (!isAlreadyOpen) {
+      pin.classList.add("clicked");
+      infoBubble.style.opacity = "0";      // hide bubble
+      infoBubble.style.pointerEvents = "none";
+    } else {
+      infoBubble.style.opacity = "1";      // show bubble back
+      infoBubble.style.pointerEvents = "auto";
+    }
+  });
+});
+
+
+document.addEventListener("click", () => {
+  pins.forEach(p => p.classList.remove("clicked"));
+  infoBubble.style.opacity = "1";
+  infoBubble.style.pointerEvents = "auto";
+});
+
+
+function loadAnsweredPins(){
+  const answered=JSON.parse(localStorage.getItem('answeredPins')||'[]');
+  answered.forEach(label=>{
+    const p=document.querySelector(`.pin[data-prefill="${label}"]`);
+    if(p)p.classList.add('answered');
+  });
+}
+function markPinAnswered(label){
+  if(!label)return;
+  const arr=JSON.parse(localStorage.getItem('answeredPins')||'[]');
+  if(!arr.includes(label))arr.push(label);
+  localStorage.setItem('answeredPins',JSON.stringify(arr));
+  const p=document.querySelector(`.pin[data-prefill="${label}"]`);
+  if(p)p.classList.add('answered');
+}
+loadAnsweredPins();
+
+closeForm.addEventListener('click', () => {
+  clearInterval(watchInterval);
+  const active = document.querySelector('[data-active-pin="true"]');
+  if (active) delete active.dataset.activePin;
+  formModal.classList.remove('active');
+
+  // Reset form and thank you state
+  const form = document.getElementById("concertForm");
+  const thankyou = document.getElementById("thankyou");
+  if (form) {
+    form.reset();
+    form.style.display = "block";
+  }
+  if (thankyou) thankyou.style.display = "none";
+});
+
+formModal.addEventListener('click',ev=>{if(ev.target===formModal)closeForm.click()});
+
+
+// --- Navigation between selected pages ---
+document.getElementById("nextBtn").addEventListener("click", () => {
+  // Load answered pin data from localStorage
+  const answeredPins = JSON.parse(localStorage.getItem("answeredPins") || "[]");
+
+  // ✅ If none answered, block navigation
+  if (answeredPins.length === 0) {
+    // If warning doesn’t exist, create one dynamically
+    let warning = document.getElementById("nextWarning");
+    if (!warning) {
+      warning = document.createElement("div");
+      warning.id = "nextWarning";
+      warning.style.position = "fixed";
+      warning.style.bottom = "20px";
+      warning.style.left = "50%";
+      warning.style.transform = "translateX(-50%)";
+      warning.style.background = "rgba(255, 0, 0, 0.9)";
+      warning.style.color = "white";
+      warning.style.padding = "12px 18px";
+      warning.style.borderRadius = "8px";
+      warning.style.fontSize = "16px";
+      warning.style.boxShadow = "0 2px 10px rgba(0,0,0,0.3)";
+      warning.style.zIndex = "9999";
+      warning.style.textAlign = "center";
+      warning.textContent = "⚠️ Please complete at least one pin before proceeding.";
+      document.body.appendChild(warning);
+
+      // Auto-hide after 3 seconds
+      setTimeout(() => {
+        warning.remove();
+      }, 3000);
+    }
+    return; // ⛔ Stop navigation
+  }
+
+  // ✅ Continue with navigation if at least one answered
+  const selectedPages = JSON.parse(localStorage.getItem("selectedPages") || "[]");
+  let currentIndex = parseInt(localStorage.getItem("currentPageIndex") || "0", 10);
+
+  if (currentIndex < selectedPages.length - 1) {
+    currentIndex++;
+    localStorage.setItem("currentPageIndex", currentIndex.toString());
+
+    const nextPage = selectedPages[currentIndex];
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("userId");
+
+    const nextUrl = userId
+      ? `${nextPage}?userId=${encodeURIComponent(userId)}`
+      : nextPage;
+
+    window.location.href = nextUrl;
+
+  } else {
+    // ✅ ALL DONE → GO TO THANK YOU PAGE
+    localStorage.removeItem("selectedPages");
+    localStorage.removeItem("currentPageIndex");
+
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("userId");
+
+    const thankUrl = userId
+      ? `thankyou.html?userId=${encodeURIComponent(userId)}`
+      : `thankyou.html`;
+
+    window.location.href = thankUrl;
+  }
+});
+
+document.querySelector('.fa-search-plus').addEventListener('click', () => {
+  zoom = Math.min(3, zoom + 0.1);
+  zoomSlider.value = zoom;
+  setTransform();
+});
+
+document.querySelector('.fa-search-minus').addEventListener('click', () => {
+  zoom = Math.max(1, zoom - 0.1);
+  zoomSlider.value = zoom;
+  setTransform();
+});
+
+document.querySelectorAll('.pin').forEach(pin => {
+  const popup = pin.querySelector('.popup');
+  let hideTimeout;
+
+  // When the user hovers over the pin → show popup immediately
+  pin.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+    popup.classList.add('visible'); // Ensures it stays visible
+  });
+
+  // When hovering inside the popup → keep it visible
+  popup.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+    popup.classList.add('visible');
+  });
+
+  // When leaving pin → delay hiding
+  pin.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+      popup.classList.remove('visible');
+    }, 200); // ⏳ adjust delay (400ms recommended)
+  });
+
+
+});
+
+
+</script>
+</body>
+</html>

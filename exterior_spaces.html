@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Spaces</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #006d6f;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  p {
+    color: #5c5c5c;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.4em;
+  }
+
+  /* 🔹 Smaller cards */
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* was 130px */
+    gap: 12px; /* slightly smaller gap */
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 20px;
+  }
+
+  .role-card {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    min-height: 95px; /* was 120px */
+    text-align: center;
+    padding: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .role-card:hover {
+    border-color: #008b8b;
+    box-shadow: 0 0 6px rgba(0, 139, 139, 0.25);
+  }
+
+  .role-card i {
+    font-size: 20px; /* was 24px */
+    color: #777;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+
+  .role-card h3 {
+    color: #333;
+    font-size: 11.5px; /* was 13px */
+    margin: 0;
+    padding: 0 4px;
+    line-height: 1.3em;
+    transition: color 0.3s;
+  }
+
+  .role-card:hover i,
+  .role-card:hover h3 {
+    color: #008b8b;
+  }
+
+  .role-card.active {
+    border-color: #008b8b;
+    box-shadow: 0 0 6px rgba(0, 139, 139, 0.3);
+  }
+
+  .role-card.active i,
+  .role-card.active h3 {
+    color: #008b8b;
+  }
+
+  .next-btn {
+    background-color: #008b8b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 30px; /* slightly smaller */
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 3px 8px rgba(0, 139, 139, 0.3);
+  }
+
+  .next-btn:hover {
+    background-color: #007373;
+  }
+</style>
+
+</head>
+<body>
+
+  <h1>Exterior Spaces</h1>
+  <p>Before entering the main concert area, which of the following spaces did you pass through or spend time in? 
+
+  <div class="roles">
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-stairs"></i>
+      <h3>Stairs</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-square-parking"></i>
+      <h3>Parking Areas</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-restroom"></i>
+      <h3>Comfort Rooms</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-tree"></i>
+      <h3>Open Plazas</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-utensils"></i>
+      <h3>Food Stalls</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <h3>Shaded Areas</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-people-line"></i>
+      <h3>Queueing</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-store"></i>
+      <h3>Merch Booth</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-id-card"></i>
+      <h3>Security Screening and Ticket Scanning</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-door-open"></i>
+      <h3>Exterior Lobby</h3>
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="showSelected()">Next</button>
+
+<script>
+  function toggleCard(card) {
+    card.classList.toggle('active');
+  }
+
+  function showSelected() {
+    const selected = [...document.querySelectorAll('.role-card.active h3')].map(el => el.textContent);
+
+    if (selected.length === 0) {
+      alert("Please select at least one space.");
+      return;
+    }
+
+    const pageMap = {
+      "Stairs": "stairs.html",
+      "Parking Areas": "parking.html",
+      "Comfort Rooms": "comfortrooms.html",
+      "Open Plazas": "openplazas.html",
+      "Food Stalls": "foodstalls.html",
+      "Shaded Areas": "shadedareas.html",
+      "Queueing": "queueing.html",
+      "Merch Booth": "merch.html",
+      "Security Screening and Ticket Scanning": "security.html",
+      "Exterior Lobby": "exteriorlobby.html"
+    };
+
+    // Save selected pages in order
+    const selectedPages = selected.map(name => pageMap[name]).filter(Boolean);
+    localStorage.setItem('selectedPages', JSON.stringify(selectedPages));
+
+    // Go to the first selected page
+    if (selectedPages.length > 0) {
+      window.location.href = selectedPages[0];
+    }
+  }
+</script>
+
+
+</body>
+</html>

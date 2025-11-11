@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    margin: 0;
+    background-color: #f0f4f8;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+  }
+  .thankyou-box {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 0 10px 0 rgba(0,0,0,0.04);
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .thankyou-box h1 {
+    font-size: 1.75rem;
+    color: #0b0357;
+    margin-bottom: 0.5rem;
+  }
+  .thankyou-box p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  form { width: 100%; margin-top: 1rem; }
+  label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  }
+  button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s, transform 0.1s;
+  }
+  button:hover { background: #2563eb; }
+  button:active { transform: scale(0.99); }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    .thankyou-box { padding: 1.5rem; }
+    .thankyou-box h1 { font-size: 1.5rem; }
+    .thankyou-box p { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="thankyou-box">
+  <h1>Survey Completed!</h1>
+  <p>You are now an official candidate for this raffle.</p>
+  <p class="section-title">Please enter your Facebook link/email. </p>
+
+  <!-- ✅ UPDATED FORM (hidden iframe submission) -->
+  <form id="submitForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfm3hvexjSWoNOPjyRDeeY-bXE3fJsDgEJmpekj0udfwHXBrA/formResponse"
+        method="POST"
+        target="hidden_iframe">
+
+    <!-- Hidden input for userId -->
+    <input type="hidden" name="entry.281574769" id="userIdField">
+
+    <label for="facebookLink">Facebook Profile Link</label>
+    <input type="text"
+           name="entry.51650144"
+           id="facebookLink"
+           placeholder="https://facebook.com/yourprofile"
+           required>
+
+    <button type="submit">Submit Raffle Entry</button>
+
+  </form>
+</div>
+
+<!-- Hidden iframe to block Google redirect -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Get userId from URL
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("userId") || ""; // fallback to empty string
+
+    // ✅ Set hidden field value
+    const userIdField = document.getElementById("userIdField");
+    if (userIdField) {
+        userIdField.value = userId;
+        console.log("UserId set in hidden field:", userIdField.value);
+    }
+
+    // ✅ Clear previous localStorage
+    try {
+        localStorage.removeItem("answeredPins");
+        localStorage.removeItem("selectedPages");
+        localStorage.removeItem("currentPageIndex");
+    } catch (e) {}
+
+    // ✅ Redirect after Google Form submission
+    let submitted = false;
+    const iframe = document.getElementById("hidden_iframe");
+    if (iframe) {
+        iframe.addEventListener("load", function () {
+            if (submitted) {
+                window.location.href = "thankyou2.html?userId=" + encodeURIComponent(userId);
+            }
+        });
+    }
+
+    // ✅ Set submitted flag on form submission
+    const form = document.getElementById("submitForm");
+    if (form) {
+        form.addEventListener("submit", function () {
+            submitted = true;
+        });
+    }
+});
+</script>
+
+</body>
+</html>

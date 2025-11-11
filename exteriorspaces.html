@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Spaces</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #ffffff;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(22px, 4vw, 28px);
+      margin-bottom: 8px;
+      color: #006d6f;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    p {
+      color: #5c5c5c;
+      margin-bottom: 25px;
+      font-size: clamp(13px, 2.5vw, 16px);
+      text-align: center;
+      line-height: 1.5em;
+      max-width: 600px;
+    }
+
+    .section-title {
+      font-size: clamp(18px, 3vw, 22px);
+      margin: 25px 0 10px;
+      font-weight: 600;
+      color: #004b4c;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .role-card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      min-height: 130px;
+      text-align: center;
+      padding: 15px 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .role-card:hover {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0, 139, 139, 0.25);
+    }
+
+    .role-card i {
+      font-size: clamp(24px, 5vw, 32px);
+      color: #777;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .role-card h3 {
+      color: #333;
+      font-size: clamp(12px, 2.8vw, 15px);
+      margin: 0;
+      padding: 0 6px;
+      line-height: 1.4em;
+      transition: color 0.3s;
+    }
+
+    .role-card.active {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0, 139, 139, 0.3);
+      transform: scale(1.03);
+    }
+
+    .role-card.active i,
+    .role-card.active h3 {
+      color: #008b8b;
+    }
+
+    .next-btn {
+      background-color: #008b8b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 40px;
+      font-size: clamp(14px, 3vw, 16px);
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 139, 139, 0.3);
+      margin-top: 20px;
+    }
+
+    .next-btn:hover {
+      background-color: #007373;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Spaces Encountered</h1>
+  <p>Select the spaces you passed through before and inside the venue.</p>
+
+  <!-- EXTERIOR -->
+  <div class="section-title">Exterior Spaces</div>
+  <div class="roles">
+       <div class="role-card" onclick="toggleCard(this)" data-page="queueing.html"><i class="fa-solid fa-people-line"></i><h3>Queueing</h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="stairs.html"><i class="fa-solid fa-stairs"></i><h3>Stairs</h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="parking.html"><i class="fa-solid fa-square-parking"></i><h3>Parking Areas</h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="foodstalls.html"><i class="fa-solid fa-utensils"></i><h3>Food Stalls</h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="shadedareas.html"><i class="fa-solid fa-umbrella-beach"></i><h3>Shaded Areas</h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="fanzone.html"><i class="fa-solid fa-store"></i><h3> Fan Zones (Joeniverse) </h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="exteriorlobby.html"><i class="fa-solid fa-door-open"></i><h3>Exterior Lobby</h3></div>
+  </div>
+
+  <!-- INTERIOR -->
+  <!-- INTERIOR -->
+<div class="section-title">Interior Spaces</div>
+<div class="roles">
+  <div class="role-card" onclick="toggleCard(this)" data-page="mainhall.html">
+    <i class="fa-solid fa-building-columns"></i>
+    <h3>Main Hall</h3>
+  </div>
+
+  <div class="role-card" onclick="toggleCard(this)" data-page="hallways.html">
+    <i class="fa-solid fa-person-walking"></i>
+    <h3>Hallways</h3>
+  </div>
+
+  <!-- ✅ DIFFERENT FROM EXTERIOR -->
+  <div class="role-card" onclick="toggleCard(this)" data-page="int_stairs.html">
+    <i class="fa-solid fa-stairs"></i>
+    <h3>Stairs</h3>
+  </div>
+
+ 
+  <div class="role-card" onclick="toggleCard(this)" data-page="int_comfortrooms.html">
+    <i class="fa-solid fa-restroom"></i>
+    <h3>Comfort Rooms</h3>
+  </div>
+</div>
+
+
+  <button class="next-btn" onclick="showSelected()">Next</button>
+
+ <script>
+  // --- Automatically tag all pins with the current page name ---
+document.addEventListener("DOMContentLoaded", () => {
+  // Derive page name from filename, e.g. "parking2.html" → "parking2"
+  const pageName = window.location.pathname.split("/").pop().replace(".html", "");
+
+  // Tag every .pin element with data-page
+  document.querySelectorAll(".pin").forEach(pin => {
+    pin.setAttribute("data-page", pageName);
+  });
+});
+
+  function toggleCard(card) {
+    card.classList.toggle("active");
+  }
+
+  function getUserIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("userId");
+  }
+
+ function showSelected() {
+  const selectedCards = document.querySelectorAll(".role-card.active");
+
+  if (selectedCards.length === 0) {
+    alert("Please select at least one space.");
+    return;
+  }
+
+  const selectedPages = [...selectedCards].map(card => card.dataset.page);
+
+  // Save to localStorage
+  localStorage.setItem("selectedPages", JSON.stringify(selectedPages));
+  localStorage.setItem("currentPageIndex", "0");
+
+  const userId = getUserIdFromUrl();
+
+  // --- Redirect logic ---
+  if (selectedPages.includes("queueing.html")) {
+    // If Queueing is selected, go to choosequeue.html first
+    window.location.href = userId
+      ? `choosequeue.html?userId=${encodeURIComponent(userId)}`
+      : "choosequeue.html";
+  } else {
+    // Otherwise, go to the first selected page
+    const firstPage = selectedPages[0];
+    window.location.href = userId
+      ? `${firstPage}?userId=${encodeURIComponent(userId)}`
+      : firstPage;
+  }
+}
+
+</script>
+
+
+</body>
+</html>

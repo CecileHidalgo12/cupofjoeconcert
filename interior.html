@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Interior Spaces</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: #000;
+      text-align: center;
+    }
+
+    p {
+      color: #777;
+      margin-bottom: 25px;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.3em;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 25px;
+    }
+
+    .role-card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      min-height: 120px;
+      text-align: center;
+      padding: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .role-card:hover {
+      border-color: #00C8A8;
+      box-shadow: 0 0 8px rgba(0, 200, 168, 0.3);
+    }
+
+    .role-card i {
+      font-size: 26px;
+      color: #777;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .role-card h3 {
+      color: #333;
+      font-size: 13px;
+      margin: 0;
+      padding: 0 5px;
+      line-height: 1.3em;
+      transition: color 0.3s;
+    }
+
+    /* Hover effect */
+    .role-card:hover i,
+    .role-card:hover h3 {
+      color: #00C8A8;
+    }
+
+    /* Active (selected) state */
+    .role-card.active {
+      border-color: #00C8A8;
+      box-shadow: 0 0 8px rgba(0, 200, 168, 0.3);
+    }
+
+    .role-card.active i,
+    .role-card.active h3 {
+      color: #00C8A8;
+    }
+
+    .next-btn {
+      background-color: #00C8A8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 35px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0, 200, 168, 0.3);
+    }
+
+    .next-btn:hover {
+      background-color: #00b099;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select Interior Spaces</h1>
+  <p>What interior spaces have you encountered?</p>
+
+  <div class="roles">
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-building-columns"></i>
+      <h3>Main Hall</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-person-walking"></i>
+      <h3>Hallways</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-stairs"></i>
+      <h3>Stairs</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-utensils"></i>
+      <h3>Food Stalls</h3>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)">
+      <i class="fa-solid fa-restroom"></i>
+      <h3>Comfort Rooms</h3>
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="showSelected()">Next</button>
+
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('active');
+    }
+
+    function showSelected() {
+      const selected = [...document.querySelectorAll('.role-card.active h3')].map(el => el.textContent);
+      alert("You selected: " + (selected.length ? selected.join(', ') : "none"));
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+/* =========================================================
+   ✅ DARK OVERLAY BACKDROP
+   ========================================================= */
+.form-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.75);
+  z-index: 999999 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.question-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;          /* Bold */
+  font-size: 0.875rem;       /* Subtext size */
+  color: #3b8d97;
+  text-align: center;        /* Center the text */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-text::before,
+.question-text::after {
+  content: "------";          /* The line */
+  margin: 0 8px;             /* Space between line and text */
+ color: #3b8d97;         /* Same color as text */
+  font-weight: 600;
+}
+
+.form-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =========================================================
+   ✅ POPUP CARD (SMALLER MODAL)
+   ========================================================= */
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+.form-content {
+  background: linear-gradient(135deg, #e6f3ff, #ffffff);
+  border: 2px solid #cfe4ff;
+  width: 55%;               /* ⬅️ Smaller */
+  max-width: 480px;         /* ⬅️ Smaller modal */
+  max-height: 70vh;         /* ⬅️ Not too tall */
+  overflow-y: auto;
+  border-radius: 20px;
+ padding: 0px 20px 10px 20px;  
+  position: relative;
+  z-index: 1000000 !important;
+
+  /* popup effect */
+  transform: scale(0.92);
+  opacity: 0;
+  animation: popIn .28s forwards ease-out;
+
+  /* floating effect */
+  box-shadow: 0px 6px 22px rgba(0, 64, 128, 0.25);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================================
+   ✅ CLOSE BUTTON
+   ========================================================= */
+/* =========================================================
+   ✅ CLOSE BUTTON (sticky so it stays visible even when scrolling)
+   ========================================================= */
+/* ================================
+   HEADER CONTAINER (sticky)
+   ================================ */
+/* =========================================================
+   ✅ STICKY SURVEY HEADER (inside modal)
+   ========================================================= */
+/* =========================================================
+   ✅ STICKY SURVEY HEADER (inside modal content container)
+   ========================================================= */
+.survey-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #dff0ff, #bfe2ff);
+  padding: 16px 24px;
+  border-bottom: 2px solid #9ecbff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.survey-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #0053aa;
+  font-weight: bold;
+}
+
+/* =========================================================
+   ✅ CLOSE BUTTON
+   ========================================================= */
+.close-form {
+  position: sticky;   /* stick inside the modal header */
+  top: 12px;          /* distance from top of container */
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #0078ff;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  padding: 4px; 
+  z-index: 1001;       /* above modal content */
+}
+
+.close-form:hover {
+  background: #005fcc;
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   ✅ SCROLLABLE BODY
+   ========================================================= */
+.form-body {
+  padding: 24px 32px;
+  height: calc(75vh - 60px); /* subtract header height */
+  overflow-y: auto;
+}
+/* =========================================================
+   ✅ MULTI-SECTION FORM
+   ========================================================= */
+#concertForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+label {
+  font-weight: bold; 
+  color: #12273a;
+  font-size: .9rem;
+}
+.userID { 
+  font-weight: bold; 
+  color: #4a5259;
+  font-size: .8rem;
+  text-align: center;
+    margin: 0;        /* remove extra space */
+  padding: 0;       /* remove any padding */
+}
+
+
+
+
+
+/* =========================================================
+   ✅ TEXT INPUTS
+   ========================================================= */
+input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid #bcd6ff;
+  font-size: 15px;
+  outline: none;
+  background: #f8fbff;
+  transition: 0.2s;
+}
+
+input[type="text"]:focus {
+  border-color: #0078ff;
+  box-shadow: 0 0 6px rgba(0, 128, 255, 0.4);
+}
+
+/* =========================================================
+   ✅ LINEAR SCALE (NUMBERS / RADIO)
+   ========================================================= */
+.options {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between options */
+  margin-top: 6px;
+  font-size: 0.9rem; /* smaller text for numbers */
+  color: #2d4963;
+}
+
+.options input[type="radio"] {
+  transform: scale(0.8); /* smaller circles */
+  accent-color: #0078ff;
+  cursor: pointer;
+  margin-right: 2px; /* small space between circle and number */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .options {
+    font-size: 0.8rem; /* even smaller on small screens */
+    gap: 6px;
+  }
+
+  .options input[type="radio"] {
+    transform: scale(0.7);
+  }
+}
+
+
+
+
+/* =========================================================
+   ✅ BUTTONS (NEXT / BACK / SUBMIT)
+   ========================================================= */
+.section button,
+button[type="submit"] {
+  background: linear-gradient(135deg, #66b8ff, #0078ff);
+  border: none;
+  color: white;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 15px;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.section button:hover,
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #4aa6ff, #005fcc);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   ✅ THANK YOU MESSAGE
+   ========================================================= */
+#thankyou {
+  text-align: center;
+  padding: 25px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #0078ff;
+}
+
+/* =========================================================
+   ✅ RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 1024px) {
+  .form-content {
+    width: 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-content {
+    width: 85%;
+    padding: 20px;
+    border-radius: 18px;
+    max-width: 420px;
+  }
+
+  .close-form {
+    font-size: 24px;
+    top: 8px;
+    right: 10px;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-content {
+    width: 92%;
+    padding: 15px;
+    max-height: 85vh;
+  }
+}
+input[readonly],
+textarea[readonly] {
+  background-color: #f2f2f2;     /* slightly gray background */
+  border: 1px solid #ccc;        /* softer border */
+  color: #555;                   /* dim the text */
+  pointer-events: none;          /* prevents cursor and clicking */
+}
+
+input[readonly]:focus,
+textarea[readonly]:focus {
+  outline: none;                 /* no blue outline when clicked */
+}
+.form-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 5 px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 6px;
+}
+
+.form-divider {
+  height: 2px;
+  background: #dcdcdc;
+  margin: 25px 0;
+}
+/* Make the modal fill the screen */
+.form-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+/* Let the form content fill most of the modal */
+
+/* Make the inner form scrollable */
+.form-content form {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ✅ Sticky footer at the bottom */
+.form-footer {
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  z-index: 10;
+}
+.text-title {
+  text-align: center;              /* center the text */
+  font-style: italic;
+  font-weight: 600;                /* slightly bold, not too heavy */
+  font-size: .5rem;               /* balanced size */
+  color: #0053aa;                  /* calm blue tone */
+  margin: 5px auto 15px auto;     /* space above and below */
+  letter-spacing: 0.3px;           /* subtle spacing for readability */
+  line-height: 1.4;                /* clean vertical spacing */
+  max-width: 90%;                  /* prevent text from stretching too wide */
+}
+/* Optional: make the submit button wider and more visible */
+.submit-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+.form-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0078ff;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/*/* =========================================================
+   ✅ SECTION HEADER CONTAINER
+   ========================================================= */
+.section-header-text {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background: rgba(0, 120, 255, 0.05); /* very soft blue tint */
+  border: 1px solid rgba(0, 120, 255, 0.15); /* subtle border */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* gentle lift */
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Title */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0053aa;
+  margin: 4px 0;
+}
+.section-subtext {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3c78b8;
+  margin: 4px 0;
+  text-align: center;
+}
+
+/* Description (with 3-line limit) */
+.section-description {
+  font-size: 0.6rem;
+  color: #444;
+  margin-top: 3px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+textarea {
+  width: 90%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  label {
+    font-size: 0.85rem;
+  }
+} 
+/* =========================================================
+    CHECKLIST STYLE (for checkbox questions)
+   ========================================================= */
+.checklist1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.9rem; /* same size as .options */
+  color: #2d4963;
+}
+
+/* Each checkbox + text inline */
+.checklist1 label {
+  font-weight: normal !important;   /* removes bold if global label uses it */
+  text-align: left !important;      /* prevents center alignment */
+  font-size: 0.80rem !important;     /* matches .options style */
+  color: #2d4963 !important;        /* same consistent color */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Checkbox style */
+.checklist1 input[type="checkbox"] {
+  transform: scale(0.9);
+  accent-color: #0078ff; /* same blue tone */
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .checklist1 {
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .checklist1 input[type="checkbox"] {
+    transform: scale(0.8);
+  }
+}
+.options2 {
+  display: flex;
+  flex-wrap: wrap;          /* wrap on small screens */
+  align-items: center;
+  justify-content: center;  /* center horizontally */
+  gap: 14px;                /* space between each option */
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #2d4963;
+}
+
+/* each radio + label pair */
+.options2 label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: normal !important;
+  text-align: left !important;
+  font-size: 0.9rem !important;
+  color: #2d4963; 
+  cursor: pointer;
+}
+
+/* make radios slightly smaller */
+.options2 input[type="radio"] {
+  transform: scale(0.9);
+  accent-color: #0078ff;
+  cursor: pointer;
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+  .options2 {
+    font-size: 0.8rem;
+    gap: 10px;
+  }
+
+  .options2 input[type="radio"] {
+    transform: scale(0.8);
+  }
+}
+/* ===== FORM SECTION TITLE WRAPPER ===== */
+.title-text {
+  text-align: center;
+  margin-bottom: 1px;
+  padding: 5px 2px;
+}
+
+/* ===== BIG TITLE (Main Heading) ===== */
+.big-title {
+  display: inline-block;           /* shrink to text width */
+  padding: 8px 15px;               /* space around the text */
+  background: rgba(26, 115, 232, 0.1); /* light blue background */
+  border-radius: 8px;              /* rounded corners */
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a73e8;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+/* ===== SMALL TITLE (Instructions) ===== */
+.small-title {
+  margin-top: 12px;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.5;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ====== Warning and animation for Next button ====== */
+/* Make all radio buttons bigger */
+.options input[type="radio"],
+.options2 input[type="radio"] {
+  transform: scale(1.8);  /* adjust the number to make it bigger or smaller */
+  margin-right: 6px;      /* space between the circle and label */
+}

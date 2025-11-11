@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fan Satisfaction & Overall Concert Journey</title>
+  <link rel="stylesheet" href="survey.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      color: #333;
+      overflow-y: auto; /* Single scroll */
+    }
+
+    .form-content {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #004aad;
+    }
+
+    .section-header-text {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: flex-start;
+      gap: 25px; /* Bigger space between radio buttons */
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8f9fc;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .options label:hover {
+      background: #eaf1ff;
+    }
+
+    .options input[type="radio"] {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .section-subtext {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #004aad;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      background: #004aad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+      background: #0066ff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Add this inside your form, preferably near the top -->
+
+  <div class="form-content">
+    <h2 id="section-title" class="form-title">Congratulations! You've rated all the spaces.</h2>
+
+    <form id="concertForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse"
+          method="POST"
+          target="_self"
+          accept-charset="UTF-8"
+          autocomplete="on">
+
+      <div class="form-section">
+
+        <div class="section-header-text">
+          <h2 class="section-title">Fan Satisfaction on the Threshold Spaces</h2>
+          <p class="section-description">
+            This is the LAST survey set! Thank you for rating each space.  
+            Please rate your overall satisfaction of the threshold spaces from 1–5  
+            (1 = strongly disagree to 5 = strongly agree)
+          </p>
+        </div>
+        <input type="hidden" name="entry.1098192972" id="userIdField">
+
+
+        <h2 class="section-subtext">FAN SATISFACTION ON THE THRESHOLD SPACES</h2>
+
+
+        <!-- Question 39 -->
+        <label>I was satisfied with my experience in the threshold spaces overall:</label>
+        <div class="options" aria-label="Q39">
+          <label><input type="radio" name="entry.1216397650" value="1" required>1</label>
+          <label><input type="radio" name="entry.1216397650" value="2">2</label>
+          <label><input type="radio" name="entry.1216397650" value="3">3</label>
+          <label><input type="radio" name="entry.1216397650" value="4">4</label>
+          <label><input type="radio" name="entry.1216397650" value="5">5</label>
+        </div>
+
+        <!-- Question 40 -->
+        <label>I was satisfied with how organized and efficient the spaces were:</label>
+        <div class="options" aria-label="Q40">
+          <label><input type="radio" name="entry.461769262" value="1" required>1</label>
+          <label><input type="radio" name="entry.461769262" value="2">2</label>
+          <label><input type="radio" name="entry.461769262" value="3">3</label>
+          <label><input type="radio" name="entry.461769262" value="4">4</label>
+          <label><input type="radio" name="entry.461769262" value="5">5</label>
+        </div>
+
+        <!-- Question 41 -->
+        <label>The threshold spaces positively shaped my anticipation before the concert began:</label>
+        <div class="options">
+          <label><input type="radio" name="entry.193784683" value="1" required>1</label>
+          <label><input type="radio" name="entry.193784683" value="2">2</label>
+          <label><input type="radio" name="entry.193784683" value="3">3</label>
+          <label><input type="radio" name="entry.193784683" value="4">4</label>
+          <label><input type="radio" name="entry.193784683" value="5">5</label>
+        </div>
+
+        <!-- Question 42 -->
+        <label>The design of the spaces made the waiting time more bearable and memorable:</label>
+        <div class="options">
+          <label><input type="radio" name="entry.743679821" value="1" required>1</label>
+          <label><input type="radio" name="entry.743679821" value="2">2</label>
+          <label><input type="radio" name="entry.743679821" value="3">3</label>
+          <label><input type="radio" name="entry.743679821" value="4">4</label>
+          <label><input type="radio" name="entry.743679821" value="5">5</label>
+        </div>
+
+        <h2 class="section-subtext">FAN SATISFACTION ON THE OVERALL CONCERT JOURNEY</h2>
+
+        <!-- Question 43 -->
+        <label>Overall pre-event experience:</label>
+        <div class="options">
+          <label><input type="radio" name="entry.249220816" value="1" required>1</label>
+          <label><input type="radio" name="entry.249220816" value="2">2</label>
+          <label><input type="radio" name="entry.249220816" value="3">3</label>
+          <label><input type="radio" name="entry.249220816" value="4">4</label>
+          <label><input type="radio" name="entry.249220816" value="5">5</label>
+        </div>
+
+        <!-- Question 44 -->
+        <label>Overall concert experience:</label>
+        <div class="options">
+          <label><input type="radio" name="entry.1557505137" value="1" required>1</label>
+          <label><input type="radio" name="entry.1557505137" value="2">2</label>
+          <label><input type="radio" name="entry.1557505137" value="3">3</label>
+          <label><input type="radio" name="entry.1557505137" value="4">4</label>
+          <label><input type="radio" name="entry.1557505137" value="5">5</label>
+        </div>
+
+        <!-- Question 45 -->
+        <label>Likelihood to attend another concert at this venue:</label>
+        <div class="options">
+          <label><input type="radio" name="entry.342652466" value="1" required>1</label>
+          <label><input type="radio" name="entry.342652466" value="2">2</label>
+          <label><input type="radio" name="entry.342652466" value="3">3</label>
+          <label><input type="radio" name="entry.342652466" value="4">4</label>
+          <label><input type="radio" name="entry.342652466" value="5">5</label>
+        </div>
+        
+<!-- Question 46 -->
+ <br> 
+<label for="q46">  What was the most memorable or enjoyable part of the pre-event experience for you?</label><br>
+<textarea name="entry.1907773432" id="q46" rows="4" placeholder="Type your answer here..." required></textarea>
+<br>
+</div>
+
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Populate userId from URL
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("userId") || "";
+  document.getElementById("userIdField").value = userId;
+
+  const form = document.getElementById("concertForm");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(form);
+
+    // Submit to Google Forms
+    fetch(form.action, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    }).then(() => {
+      // Pass userId to thank you page
+      window.location.href = `thankyou3.html?userId=${encodeURIComponent(userId)}`;
+    }).catch((err) => {
+      console.error("Submission failed", err);
+      alert("Sorry, there was a problem submitting your response.");
+    });
+  });
+});
+
+</script>
