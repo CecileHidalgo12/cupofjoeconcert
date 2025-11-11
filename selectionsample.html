@@ -10,6 +10,79 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
+    /* --- View button inside card --- */
+.view-btn {
+  margin-top: 8px;
+  background-color: #e0f7f7;
+  color: #008b8b;
+  border: 1px solid #008b8b;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #008b8b;
+  color: white;
+}
+
+/* --- Modal for slideshow --- */
+#slideshowModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+#slideshowModal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+/* --- Larger, more visible navigation buttons for slideshow --- */
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 15px 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  z-index: 1100;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-nav:hover {
+  background: rgba(0, 139, 139, 0.85);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modal-prev { left: 35px; }
+.modal-next { right: 35px; }
+
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
 
     body {
       display: flex;
@@ -130,7 +203,7 @@
   <div class="section-title">Exterior Spaces</div>
   <div class="roles">
        <div class="role-card" onclick="toggleCard(this)" data-page="queueing.html"><i class="fa-solid fa-people-line"></i><h3>Queueing</h3></div>
-    <div class="role-card" onclick="toggleCard(this)" data-page="stairs.html"><i class="fa-solid fa-stairs"></i><h3>Stairs (Red Gate) </h3></div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="stairs.html"><i class="fa-solid fa-stairs"></i><h3>Stairs</h3></div>
     <div class="role-card" onclick="toggleCard(this)" data-page="parking.html"><i class="fa-solid fa-square-parking"></i><h3> South Parking</h3></div>
     <div class="role-card" onclick="toggleCard(this)" data-page="foodstalls.html"><i class="fa-solid fa-utensils"></i><h3>Food Stalls</h3></div>
     <div class="role-card" onclick="toggleCard(this)" data-page="shadedareas.html"><i class="fa-solid fa-umbrella-beach"></i><h3>Shaded Areas</h3></div>
@@ -157,6 +230,10 @@
    <div class="role-card" onclick="toggleCard(this)" data-page="hallways2.html">
     <i class="fa-solid fa-person-walking"></i>
     <h3>Hallways Second  Floor</h3>
+    <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow(['exterior-pics/mainfirst6a.jpg','exterior-pics/mainfirst6b.jpg'])">
+  👁 View
+</button>
   </div>
   <div class="role-card" onclick="toggleCard(this)" data-page="hallways3.html">
     <i class="fa-solid fa-person-walking"></i>
@@ -182,8 +259,35 @@
 
 
   <button class="next-btn" onclick="showSelected()">Next</button>
+<!-- Slideshow Modal -->
+<div id="slideshowModal">
+  <span class="modal-close" onclick="closeSlideshow()">&times;</span>
+  <span class="modal-prev" onclick="changeSlide(-1)">&#10094;</span>
+  <img id="slideshowImage" src="">
+  <span class="modal-next" onclick="changeSlide(1)">&#10095;</span>
+</div>
 
  <script>
+    let currentSlideIndex = 0;
+let slideImages = [];
+
+function openSlideshow(images) {
+  slideImages = images;
+  currentSlideIndex = 0;
+  document.getElementById("slideshowImage").src = slideImages[0];
+  document.getElementById("slideshowModal").style.display = "flex";
+}
+
+function closeSlideshow() {
+  document.getElementById("slideshowModal").style.display = "none";
+}
+
+function changeSlide(direction) {
+  currentSlideIndex += direction;
+  if (currentSlideIndex < 0) currentSlideIndex = slideImages.length - 1;
+  if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
+  document.getElementById("slideshowImage").src = slideImages[currentSlideIndex];
+}
   // --- Automatically tag all pins with the current page name ---
 document.addEventListener("DOMContentLoaded", () => {
   // Derive page name from filename, e.g. "parking2.html" → "parking2"
