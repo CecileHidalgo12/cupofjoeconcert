@@ -33,46 +33,22 @@
 --> 
 <div id="mapContainer" class="map-container">
   <div id="mapInner" class="map-inner">
- <div class="pin" data-x="2300" data-y="1105" data-prefill="[EXTERIOR] Stairs - Left Side Stairs" 
-       data-images='["exterior-pics/leftstair1.jpg","exterior-pics/leftstair2.jpg"]'>
-      <div class="popup">
-        <div class="popup-gallery">
-          <img src="exterior-pics/leftstair1.jpg" alt="left-stairs"/>
-          <img src="exterior-pics/leftstair2.jpg" alt="left-stairs"/>
-        </div>
-        <div class="popup-content">
-          <h3>Left Side Stairs</h3>
-          <p>Click to proceed</p>
-          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-        </div>
-      </div>
+ <<div class="pin" data-x="1748" data-y="421" 
+     data-prefill="[EXTERIOR] Stairs - Exterior Stairs"
+     data-images='["exterior-pics/stairs1.jpg","exterior-pics/stairs2.jpg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/stairs1.jpg" alt="Exterior Stairs - View 1"/>
+      <img src="exterior-pics/stairs2.jpg" alt="Exterior Stairs - View 2"/>
     </div>
+    <div class="popup-content">
+      <h3>Stairs - Exterior Stairs</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
 
-    <div class="pin" data-x="2740" data-y="1105" data-prefill="[EXTERIOR] Stairs - Right Side Stairs" >
-      <div class="popup">
-        <img src="exterior-pics/rightstair1.jpg" alt="right-stairs"/>
-        <div class="popup-content">
-          <h3>Right Side Stairs</h3>
-          <p>Click to proceed</p>
-          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="pin" data-x="2507" data-y="1250" data-prefill="[EXTERIOR] Stairs - Front Stairs" 
-       data-images='["exterior-pics/frontstair1.jpg","exterior-pics/frontstair2.jpg"]'>
-      <div class="popup">
-        <div class="popup-gallery">
-          <img src="exterior-pics/frontstair1.jpg" alt="front-stairs"/>
-          <img src="exterior-pics/frontstair2.jpg" alt="front-stairs"/>
-        </div>
-        <div class="popup-content">
-          <h3>Front Side Stairs</h3>
-          <p>Click to proceed</p>
-          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-        </div>
-      </div>
-    </div>
 
 
   </div> <!-- end of mapInner -->
@@ -524,8 +500,8 @@
     </form>
 
     <div id="thankyou" style="display:none; text-align:center; padding:20px;">
-      <h3 class="section-title">Your response has been recorded!</h3>
-      <p class="section-subtext">Close this to continue</p>
+      <h3 class="section-title">RECORED!Please close this to continue evaluating other spaces</h3>
+      <p class="section-subtext">There may be more spaces to assess</p>
     </div>
 
   </div> <!-- ✅ closes .form-content -->
@@ -580,7 +556,7 @@ document.getElementById('concertForm').addEventListener('submit', function(e) {
   });
 
   // Submit directly to Google Forms
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData

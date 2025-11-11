@@ -34,72 +34,12 @@
 
 <div id="mapContainer" class="map-container">
   <div id="mapInner" class="map-inner">
-<div class="pin" data-x="2998" data-y="1507" data-prefill="[EXTERIOR] PARKING AREAS - Parking A">
+<div class="pin" data-x="952" data-y="1037" 
+     data-prefill="[EXTERIOR] Parking - South Parking">
   <div class="popup">
-    <img src="exterior-pics/parkinga.jpg" alt="Parking A"/>
+    <img src="exterior-pics/parking.jpg" alt="South Parking"/>
     <div class="popup-content">
-      <h3>Parking A</h3>
-      <p>Click to proceed</p>
-      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-    </div>
-  </div>
-</div>
-
-<div class="pin" data-x="2907" data-y="834" data-prefill="[EXTERIOR] PARKING AREAS - Parking B">
-  <div class="popup">
-    <img src="exterior-pics/parkingb.jpg" alt="Parking B"/>
-    <div class="popup-content">
-      <h3>Parking B</h3>
-      <p>Click to proceed</p>
-      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-    </div>
-  </div>
-</div>
-<div class="pin" data-x="2278" data-y="887" data-prefill="[EXTERIOR] PARKING AREAS - Parking C" 
-     data-images='["exterior-pics/parkingc1.jpg","exterior-pics/parkingc2.jpg"]'>
-  <div class="popup">
-    <div class="popup-gallery">
-      <img src="exterior-pics/parkingc1.jpg" alt="Parking C 1"/>
-      <img src="exterior-pics/parkingc2.jpg" alt="Parking C 2"/>
-    </div>
-    <div class="popup-content">
-      <h3>Parking C</h3>
-      <p>Click to proceed</p>
-      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-    </div>
-  </div>
-</div>
-<div class="pin" data-x="1597" data-y="1704" data-prefill="[EXTERIOR] PARKING AREAS - Parking D">
-  <div class="popup">
-    <img src="exterior-pics/parkingd.jpg" alt="Parking D"/>
-    <div class="popup-content">
-      <h3>Parking D</h3>
-      <p>Click to proceed</p>
-      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-    </div>
-  </div>
-</div>
-<div class="pin" data-x="880" data-y="1141" data-prefill="[EXTERIOR] PARKING AREAS - Parking E">
-  <div class="popup">
-    <img src="exterior-pics/parkinge1.png" alt="Parking E"/>
-    <div class="popup-content">
-      <h3>Parking E</h3>
-      <p>Click to proceed</p>
-      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
-    </div>
-  </div>
-</div>
-<div class="pin" data-x="2437" data-y="640" data-prefill="[EXTERIOR] PARKING AREAS - NLET" 
-     data-images='["exterior-pics/nlet1.jpg","exterior-pics/nlet2.jpg","exterior-pics/nlet3.jpg","exterior-pics/nlet4.jpg"]'>
-  <div class="popup">
-    <div class="popup-gallery">
-      <img src="exterior-pics/nlet1.jpg" alt="NLET Parking 1"/>
-      <img src="exterior-pics/nlet2.jpg" alt="NLET Parking 2"/>
-      <img src="exterior-pics/nlet3.jpg" alt="NLET Parking 3"/>
-      <img src="exterior-pics/nlet4.jpg" alt="NLET Parking 4"/>
-    </div>
-    <div class="popup-content">
-      <h3>NLET Parking</h3>
+      <h3>Parking - South Parking</h3>
       <p>Click to proceed</p>
       <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
     </div>
@@ -560,51 +500,16 @@
 </div>
 <br>
   </div>
-  <div class="form-section">
-   
-    <h3 class="text-title">  Fan Satisfaction & Overall Concert Journey</h3>
-   <div class="section-header-text">
-          <h2 class="section-title"> Fan Satisfaction on the Threshold Spaces </h2>
-          <p class="section-description">Instruction: Rate your overall satisfaction of the overall threshold spaces from 1-5 (1 = strongly disagree to 5 = strongly agree)
-</p>
-      </div>
-
-<!-- Question 39 -->
- <h2 class="section-subtext"> FAN SATISFACTION ON THE THRESHOLD SPACES </h2>
-<label>  I was satisfied with my experience in the threshold spaces overall:</label>
-<div class="options">
-  <input type="radio" name="entry.1216397650" value="1" required> 1
-  <input type="radio" name="entry.1216397650" value="2"> 2
-  <input type="radio" name="entry.1216397650" value="3"> 3
-  <input type="radio" name="entry.1216397650" value="4"> 4
-  <input type="radio" name="entry.1216397650" value="5"> 5
-</div>
-<br>
-
-<!-- Question 40 -->
-<label> I was satisfied with how organized and efficient the spaces were:</label>
-<div class="options">
-  <input type="radio" name="entry.461769262" value="1" required> 1
-  <input type="radio" name="entry.461769262" value="2"> 2
-  <input type="radio" name="entry.461769262" value="3"> 3
-  <input type="radio" name="entry.461769262" value="4"> 4
-  <input type="radio" name="entry.461769262" value="5"> 5
-</div>
-<br>
-
-</div>
 
         <button type="submit">Submit</button>
 
       </div> <!-- ✅ closes .section -->
 
     </form>
-
     <div id="thankyou" style="display:none; text-align:center; padding:20px;">
-      <h3 class="section-title">Your response has been recorded!</h3>
-      <p class="section-subtext">Close this to continue</p>
+      <h3 class="section-title">RECORED! Please close this to continue evaluating other spaces</h3>
+      <p class="section-subtext">There may be more spaces to assess</p>
     </div>
-
   </div> <!-- ✅ closes .form-content -->
 </div> <!-- ✅ closes modal -->
 
@@ -657,7 +562,7 @@ document.getElementById('concertForm').addEventListener('submit', function(e) {
   });
 
   // Submit directly to Google Forms
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData
