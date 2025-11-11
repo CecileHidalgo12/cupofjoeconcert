@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Spaces</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* --- View button inside card --- */
+.view-btn {
+  margin-top: 8px;
+  background-color: #e0f7f7;
+  color: #008b8b;
+  border: 1px solid #008b8b;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #008b8b;
+  color: white;
+}
+
+/* --- Modal for slideshow --- */
+#slideshowModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+#slideshowModal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+/* --- Larger, more visible navigation buttons for slideshow --- */
+/* --- Larger, more visible navigation buttons for slideshow --- */
+/* --- Standard size navigation buttons for slideshow --- */
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 40px; /* Reduced size for a standard button size */
+  height: 40px; /* Reduced size for a standard button size */
+  border-radius: 50%;        /* Keeps it a circle */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;           /* Standard font size for the icon */
+  color: white;
+
+  background: rgba(0, 0, 0, 0.7);   /* Darker background */
+  border: 2px solid rgba(255, 255, 255, 0.8); /* Lighter border for better visibility */
+  
+  cursor: pointer;
+  z-index: 2000;             /* Ensures it's above the image */
+  user-select: none;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-nav:hover {
+  background: #008b8b;        /* Teal hover background */
+  transform: translateY(-50%) scale(1.1); /* Slight zoom effect on hover */
+}
+
+.modal-prev { left: 10px; }   /* Adjusted position to keep it balanced */
+.modal-next { right: 10px; }  /* Adjusted position to keep it balanced */
+
+/* Close Button (no changes, but included for clarity) */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 0, 0, 0.9);
+  transform: scale(1.15);
+}
+
+
+
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #ffffff;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(22px, 4vw, 28px);
+      margin-bottom: 8px;
+      color: #006d6f;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    p {
+      color: #5c5c5c;
+      margin-bottom: 25px;
+      font-size: clamp(13px, 2.5vw, 16px);
+      text-align: center;
+      line-height: 1.5em;
+      max-width: 600px;
+    }
+
+    .section-title {
+      font-size: clamp(18px, 3vw, 22px);
+      margin: 25px 0 10px;
+      font-weight: 600;
+      color: #004b4c;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .role-card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      min-height: 130px;
+      text-align: center;
+      padding: 15px 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .role-card:hover {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0, 139, 139, 0.25);
+    }
+
+    .role-card i {
+      font-size: clamp(24px, 5vw, 32px);
+      color: #777;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .role-card h3 {
+      color: #333;
+      font-size: clamp(12px, 2.8vw, 15px);
+      margin: 0;
+      padding: 0 6px;
+      line-height: 1.4em;
+      transition: color 0.3s;
+    }
+
+    .role-card.active {
+      border-color: #008b8b;
+      box-shadow: 0 0 10px rgba(0, 139, 139, 0.3);
+      transform: scale(1.03);
+    }
+
+    .role-card.active i,
+    .role-card.active h3 {
+      color: #008b8b;
+    }
+
+    .next-btn {
+      background-color: #008b8b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 40px;
+      font-size: clamp(14px, 3vw, 16px);
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 139, 139, 0.3);
+      margin-top: 20px;
+    }
+
+    .next-btn:hover {
+      background-color: #007373;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Spaces Encountered</h1>
+  <p>Select the spaces you passed through before and inside the venue.</p>
+
+  <!-- EXTERIOR -->
+  <div class="section-title">Exterior Spaces</div>
+  <div class="roles">
+
+       <div class="role-card" onclick="toggleCard(this)" data-page="queueing.html"><i class="fa-solid fa-people-line"></i><h3>Queueing</h3>  <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/redgate1f2.jpg', 'exterior-pics/redgate1f3.jpg',  // Red Gate First Floor Extended Queue
+  'exterior-pics/yellowgate1.jpg', 'exterior-pics/yellowgate2.jpg', 'exterior-pics/yellowgate3.jpg',  // Yellow Gate
+  'exterior-pics/redgate1f1.jpg',  // Red Gate First Floor
+  'exterior-pics/redgate2f.jpg',  // Red Gate Second Floor
+  'exterior-pics/greengate1.jpg', 'exterior-pics/greengate2.jpg', 'exterior-pics/greengate3.jpg',  // Green Gate 1
+  'exterior-pics/greengate1a.jpg', 'exterior-pics/greengate1b.jpg'  // Green Gate 2
+])">
+  👁 See Images
+</button></div>
+
+    <div class="role-card" onclick="toggleCard(this)" data-page="stairs.html"><i class="fa-solid fa-stairs"></i><h3>Stairs</h3>
+
+     <button class="view-btn" 
+  onclick="event.stopPropagation(); 
+openSlideshow([
+  'exterior-pics/stairs1.jpg',
+  'exterior-pics/stairs2.jpg'
+])">
+  👁 See Images
+</button>
+    </div>
+
+
+    <div class="role-card" onclick="toggleCard(this)" data-page="parking.html"><i class="fa-solid fa-square-parking"></i><h3> South Parking</h3>
+      <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/parking.jpg'
+])">
+  👁 See Images
+</button>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="foodstalls.html"><i class="fa-solid fa-utensils"></i><h3>Food Stalls</h3>
+      <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/foodstall1.jpg',
+  'exterior-pics/foodstall2.JPG'
+])">
+  👁 See Images
+</button>
+    </div>
+
+    <div class="role-card" onclick="toggleCard(this)" data-page="shadedareas.html"><i class="fa-solid fa-umbrella-beach"></i><h3>Shaded Areas</h3>
+     <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/shadedb1.jpg', 'exterior-pics/shadedb2.jpg',  // Shaded 2
+  'exterior-pics/shadedc1.jpg', 'exterior-pics/shadedc2.jpg'   // Shaded 3
+]);">
+  👁 See Images
+</button>
+    </div>
+    
+    <div class="role-card" onclick="toggleCard(this)" data-page="fanzone.html"><i class="fa-solid fa-store"></i><h3> Fan Zones (Joeniverse) </h3>
+    
+  <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/fanzone.jpg'
+])">
+  👁 See Images
+</button>
+    </div>
+    <div class="role-card" onclick="toggleCard(this)" data-page="exteriorlobby.html"><i class="fa-solid fa-door-open"></i><h3>Exterior Hallways</h3>
+    <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/exthallway2a.jpg', 'exterior-pics/exthallway2b.jpg',  // Exterior Hallway 2
+  'exterior-pics/exthallway3a.jpg', 'exterior-pics/exthallway3b.jpg'   // Exterior Hallway 3
+]);
+">
+  👁 See Images
+</button>
+    
+    </div>
+</div>
+ <!-- INTERIOR -->
+  <!-- INTERIOR -->
+<div class="section-title">Interior Spaces</div>
+<div class="roles">
+
+  <div class="role-card" onclick="toggleCard(this)" data-page="mainhall1.html">
+    <i class="fa-solid fa-building-columns"></i>
+    <h3>Main Hall First Floor</h3>
+
+  <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/mainfirst1a.jpg', 'exterior-pics/mainfirst1b.jpg',  // Green Gate
+  'exterior-pics/mainfirst2a.jpg', 'exterior-pics/mainfirst2b.jpg',  // Red Gate
+  'exterior-pics/mainfirst3a.jpg'                                    // Yellow Gate
+])">
+  👁 See Images
+</button>
+
+  </div>
+  <div class="role-card" onclick="toggleCard(this)" data-page="mainhall2.html">
+    <i class="fa-solid fa-building-columns"></i>
+    <h3>Main Hall Second Floor</h3>
+      <button class="view-btn" 
+  onclick="event.stopPropagation();openSlideshow([
+  'exterior-pics/mainfirst4a.jpg',  // Green Gate (used in both Green Gate and Red Gate)
+  'exterior-pics/mainfirst6a.jpg', 'exterior-pics/mainfirst6b.jpg'   // Yellow Gate
+])">
+  👁 See Images
+</button>
+  </div>
+  <div class="role-card" onclick="toggleCard(this)" data-page="hallways1.html">
+    <i class="fa-solid fa-person-walking"></i>
+    <h3>Hallways First Floor</h3>
+<button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/hallway1a.jpg', 'exterior-pics/hallway1b.jpg'  // Hallways First Floor images
+])">
+  👁 See Images
+</button>
+
+  </div>
+
+   <div class="role-card" onclick="toggleCard(this)" data-page="hallways2.html">
+    <i class="fa-solid fa-person-walking"></i>
+    <h3>Hallways Second  Floor</h3>
+    <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/hallways2a.jpg',
+  'exterior-pics/hallways2b.jpg',
+  'exterior-pics/hallways2c.jpg'
+])">
+  👁 See Images
+</button>
+  </div>
+
+  <div class="role-card" onclick="toggleCard(this)" data-page="hallways3.html">
+    <i class="fa-solid fa-person-walking"></i>
+    <h3>Hallways Third Floor</h3>
+
+  <button class="view-btn" 
+  onclick="event.stopPropagation();openSlideshow([
+  'exterior-pics/hallways3a.jpg', 'exterior-pics/hallways3b.jpg'  // Hallways Third Floor images
+])">
+  👁 See Images
+</button>
+  </div>
+
+
+  <!-- ✅ DIFFERENT FROM EXTERIOR -->
+  <div class="role-card" onclick="toggleCard(this)" data-page="int_stairs.html">
+    <i class="fa-solid fa-stairs"></i>
+    <h3> Stairs First Floor</h3>
+
+  <button class="view-btn" 
+  onclick="event.stopPropagation(); 
+openSlideshow([
+  'exterior-pics/intstair1.jpg',  // Interior Stairs 1 - Green Gate
+  'exterior-pics/intstair2.jpg',  // Interior Stairs 1 - Red Gate
+  'exterior-pics/intstair3.jpg'   // Interior Stairs 1 - Yellow Gate
+])">
+  👁 See Images
+</button>
+  </div>
+
+   <div class="role-card" onclick="toggleCard(this)" data-page="int_stairs2.html">
+    <i class="fa-solid fa-stairs"></i>
+    <h3> Stairs Second Floor (General Admission) </h3>
+     <button class="view-btn" 
+  onclick="event.stopPropagation(); openSlideshow([
+  'exterior-pics/intstair4.jpg'  // Interior Stairs 2 - General Admission
+])">
+  👁 See Images
+</button>
+  </div>
+  <div class="role-card" onclick="toggleCard(this)" data-page="comfortrooms1.html">
+    <i class="fa-solid fa-restroom"></i>
+    <h3>Comfort Rooms</h3>
+  </div>
+</div>
+
+
+
+  <button class="next-btn" onclick="showSelected()">Next</button>
+<!-- Slideshow Modal -->
+<div id="slideshowModal">
+  <span class="modal-close" onclick="closeSlideshow()">&times;</span>
+ <span class="modal-nav modal-prev" onclick="changeSlide(-1)">&#10094;</span>
+  <img id="slideshowImage" src="">
+  <span class="modal-nav modal-next" onclick="changeSlide(1)">&#10095;</span>
+</div>
+
+ <script>
+    let currentSlideIndex = 0;
+let slideImages = [];
+
+function openSlideshow(images) {
+  slideImages = images;
+  currentSlideIndex = 0;
+  document.getElementById("slideshowImage").src = slideImages[0];
+  document.getElementById("slideshowModal").style.display = "flex";
+}
+
+function closeSlideshow() {
+  document.getElementById("slideshowModal").style.display = "none";
+}
+
+function changeSlide(direction) {
+  currentSlideIndex += direction;
+  if (currentSlideIndex < 0) currentSlideIndex = slideImages.length - 1;
+  if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
+  document.getElementById("slideshowImage").src = slideImages[currentSlideIndex];
+}
+  // --- Automatically tag all pins with the current page name ---
+document.addEventListener("DOMContentLoaded", () => {
+  // Derive page name from filename, e.g. "parking2.html" → "parking2"
+  const pageName = window.location.pathname.split("/").pop().replace(".html", "");
+
+  // Tag every .pin element with data-page
+  document.querySelectorAll(".pin").forEach(pin => {
+    pin.setAttribute("data-page", pageName);
+  });
+});
+
+  function toggleCard(card) {
+    card.classList.toggle("active");
+  }
+
+  function getUserIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("userId");
+  }
+
+ function showSelected() {
+  const selectedCards = document.querySelectorAll(".role-card.active");
+
+  if (selectedCards.length === 0) {
+    alert("Please select at least one space.");
+    return;
+  }
+
+  const selectedPages = [...selectedCards].map(card => card.dataset.page);
+
+  // Save to localStorage
+  localStorage.setItem("selectedPages", JSON.stringify(selectedPages));
+  localStorage.setItem("currentPageIndex", "0");
+
+  const userId = getUserIdFromUrl();
+
+  // --- Redirect logic ---
+  if (selectedPages.includes("queueing.html")) {
+    // If Queueing is selected, go to choosequeue.html first
+    window.location.href = userId
+      ? `choosequeue.html?userId=${encodeURIComponent(userId)}`
+      : "choosequeue.html";
+  } else {
+    // Otherwise, go to the first selected page
+    const firstPage = selectedPages[0];
+    window.location.href = userId
+      ? `${firstPage}?userId=${encodeURIComponent(userId)}`
+      : firstPage;
+  }
+}
+
+</script>
+
+
+</body>
+</html>
