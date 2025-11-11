@@ -23,6 +23,8 @@
     <button id="nextBtn" class="next-btn">Next</button>
   </div>
    <div class="info-bubble2">  ℹ️YOU ARE EVALUATING SHADED AREAS</div>
+   
+  <div class="info-bubble3">  ℹ️MAKE SURE TO SCROLL DOWN</div>
 <!-- Floating Instruction Bubble -->
 <!-- <div class="info-bubble">
   <i class="fa fa-info-circle"></i>
@@ -61,6 +63,21 @@
   </div>
 </div>
 
+<div class="pin" data-x="2624" data-y="1533" 
+     data-prefill="[EXTERIOR] Shaded Areas - Shaded 3"
+     data-images='["exterior-pics/shadedc1.jpg","exterior-pics/shadedc2.jpg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/shadedc1.jpg" alt="Shaded 3 - View 1"/>
+      <img src="exterior-pics/shadedc2.jpg" alt="Shaded 3 - View 2"/>
+    </div>
+    <div class="popup-content">
+      <h3>Shaded Areas - Shaded 3</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
 
   </div> <!-- end of mapInner -->
 </div> <!-- end of mapContainer -->
@@ -524,10 +541,11 @@
 
     </form>
 
-    <div id="thankyou" style="display:none; text-align:center; padding:20px;">
-      <h3 class="section-title">Your response has been recorded!</h3>
-      <p class="section-subtext">Close this to continue</p>
+ <div id="thankyou" style="display:none; text-align:center; padding:20px;">
+      <h3 class="section-title">RECORDED! Please close this to continue evaluating other spaces</h3>
+      <p class="section-subtext">There may be more spaces to assess</p>
     </div>
+
 
   </div> <!-- ✅ closes .form-content -->
 </div> <!-- ✅ closes modal -->
@@ -581,7 +599,7 @@ document.getElementById('concertForm').addEventListener('submit', function(e) {
   });
 
   // Submit directly to Google Forms
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData
