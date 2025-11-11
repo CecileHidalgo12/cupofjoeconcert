@@ -3,14 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>STAIRS</title>
+<title> OPEN PLAZAS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="map-style.css" />
 <link rel="stylesheet" href="survey.css" />
 </head>
 <body>
-
-  <div class="top-container">
+<div class="top-container">
   
      <div class="top-title">                         </div>
     <div class="zoom-controls">
@@ -23,8 +22,7 @@
   
     <button id="nextBtn" class="next-btn">Next</button>
   </div>
-   <div class="info-bubble2">  ℹ️YOU ARE EVALUATING STAIRS</div>
-
+   <div class="info-bubble2">  ℹ️YOU ARE EVALUATING OPEN PLAZAS</div>
 <!-- Floating Instruction Bubble -->
 <!-- <div class="info-bubble">
   <i class="fa fa-info-circle"></i>
@@ -33,22 +31,54 @@
 --> 
 <div id="mapContainer" class="map-container">
   <div id="mapInner" class="map-inner">
- <div class="pin" data-x="1748" data-y="421" 
-     data-prefill="[EXTERIOR] Stairs - Exterior Stairs"
-     data-images='["exterior-pics/stairs1.jpg","exterior-pics/stairs2.jpg"]'>
+
+    <div class="pin" data-x="2507" data-y="1330" data-prefill="[EXTERIOR] Open Plaza - Forecourt" 
+       data-images='["exterior-pics/forecourt1.jpg","exterior-pics/forecourt2.jpg"]'>
+      <div class="popup">
+        <div class="popup-gallery">
+          <img src="exterior-pics/forecourt1.jpg" alt="forecourt1"/>
+          <img src="exterior-pics/forecourt2.jpg" alt="forecourt2"/>
+        </div>
+        <div class="popup-content">
+          <h3>Forecourt</h3>
+          <p>Click to proceed</p>
+          <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+        </div>
+      </div>
+    </div>
+
+      
+
+<div class="pin" data-x="2255" data-y="1550" data-prefill="[EXTERIOR] Open Plaza - Open Plaza 1"
+     data-images='["exterior-pics/openplaza1.jpg","exterior-pics/openplaza2.jpg"]'>
   <div class="popup">
     <div class="popup-gallery">
-      <img src="exterior-pics/stairs1.jpg" alt="Exterior Stairs - View 1"/>
-      <img src="exterior-pics/stairs2.jpg" alt="Exterior Stairs - View 2"/>
+      <img src="exterior-pics/openplaza1.jpg" alt="openplaza1"/>
+      <img src="exterior-pics/openplaza2.jpg" alt="openplaza2"/>
     </div>
     <div class="popup-content">
-      <h3>Stairs - Exterior Stairs</h3>
+      <h3>Open Plaza 1</h3>
       <p>Click to proceed</p>
       <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
     </div>
   </div>
 </div>
 
+   <!-- ✅ Updated Open Plaza 2 Pin (with 2 images) -->
+<div class="pin" data-x="2240" data-y="1040" data-prefill="[EXTERIOR] Open Plaza - Open Plaza 2"
+     data-images='["exterior-pics/openplaza3.jpeg","exterior-pics/openplaza4.jpeg"]'>
+  <div class="popup">
+    <div class="popup-gallery">
+      <img src="exterior-pics/openplaza3.jpeg" alt="openplaza3"/>
+      <img src="exterior-pics/openplaza4.jpeg" alt="openplaza4"/>
+    </div>
+    <div class="popup-content">
+      <h3>Open Plaza 2</h3>
+      <p>Click to proceed</p>
+      <button class="answer-btn"><i class="fa fa-location-arrow"></i> Proceed</button>
+    </div>
+  </div>
+</div>
 
 
   </div> <!-- end of mapInner -->
@@ -80,428 +110,11 @@
   <div class="form-content">
      <button id="closeForm" class="close-form"><i class="fa fa-times"></i></button>
 
-    <form id="concertForm">
-
-
-
-<div class="title-text">
-          <h2 class="big-title"> EXTERIOR STAIRS </h2>
-      </div>
-<div class="form-section">
-   
-   <div class="section-header-text">
-          <h2 class="section-title"> USER INFO  </h2>
-          <p class="section-description"> These are the respondent details for this part of the survey</p>
-      </div>
-
-        <label class="userID"> USERID </label><br>
-        <input type="text" id="userid" name="entry.1098192972" required readonly>
-
-        <br> 
-
-        <label class="userID"> SPACE DESCRIPTION </label><br>
-        <input type="text" id="space" name="entry.1645044953" required readonly>
-</div>
-<div class="form-section">
-   
-   <h3 class="text-title"> Fan Experience and Perceptions in Threshold Spaces </h3>
-
-<div class="section-header-text">
-    <h2 class="section-title"> Physical Attributes Ratings  </h2>
-    <p class="section-description">Instructions: Based on this space, please rate the statements below on a 1–5 scale (1 being strongly disagree and 5 being strongly agree).</p>
-</div>
-
-<!-- Question 1 -->
-<label> Pathways allowed smooth movement</label>
-<div class="options">
-  <input type="radio" name="entry.655245715" value="1" required> 1
-  <input type="radio" name="entry.655245715" value="2"> 2
-  <input type="radio" name="entry.655245715" value="3"> 3
-  <input type="radio" name="entry.655245715" value="4"> 4
-  <input type="radio" name="entry.655245715" value="5"> 5
-</div>
-<br>
-
-<!-- Question 2 -->
-<label> The space handled large crowds well</label>
-<div class="options">
-  <input type="radio" name="entry.1343960584" value="1" required> 1
-  <input type="radio" name="entry.1343960584" value="2"> 2
-  <input type="radio" name="entry.1343960584" value="3"> 3
-  <input type="radio" name="entry.1343960584" value="4"> 4
-  <input type="radio" name="entry.1343960584" value="5"> 5
-</div>
-<br>
-
-<!-- Question 3 -->
-<label> The space felt comfortable in size</label>
-<div class="options">
-  <input type="radio" name="entry.1506988326" value="1" required> 1
-  <input type="radio" name="entry.1506988326" value="2"> 2
-  <input type="radio" name="entry.1506988326" value="3"> 3
-  <input type="radio" name="entry.1506988326" value="4"> 4
-  <input type="radio" name="entry.1506988326" value="5"> 5
-</div>
-<br>
-
-<!-- Question 4 -->
-<label> The space felt inviting</label>
-<div class="options">
-  <input type="radio" name="entry.1108684750" value="1" required> 1
-  <input type="radio" name="entry.1108684750" value="2"> 2
-  <input type="radio" name="entry.1108684750" value="3"> 3
-  <input type="radio" name="entry.1108684750" value="4"> 4
-  <input type="radio" name="entry.1108684750" value="5"> 5
-</div>
-<br>
-
-<!-- Question 5 -->
-<label> Movement felt natural and easy</label>
-<div class="options">
-  <input type="radio" name="entry.635419496" value="1" required> 1
-  <input type="radio" name="entry.635419496" value="2"> 2
-  <input type="radio" name="entry.635419496" value="3"> 3
-  <input type="radio" name="entry.635419496" value="4"> 4
-  <input type="radio" name="entry.635419496" value="5"> 5
-</div>
-<br>
-
-<!-- Question 6 -->
-<label> The area had enough shade</label>
-<div class="options">
-  <input type="radio" name="entry.487783427" value="1" required> 1
-  <input type="radio" name="entry.487783427" value="2"> 2
-  <input type="radio" name="entry.487783427" value="3"> 3
-  <input type="radio" name="entry.487783427" value="4"> 4
-  <input type="radio" name="entry.487783427" value="5"> 5
-</div>
-<br>
-
-<!-- Question 7 -->
-<label> It was protected from rain or heat</label>
-<div class="options">
-  <input type="radio" name="entry.233604546" value="1" required> 1
-  <input type="radio" name="entry.233604546" value="2"> 2
-  <input type="radio" name="entry.233604546" value="3"> 3
-  <input type="radio" name="entry.233604546" value="4"> 4
-  <input type="radio" name="entry.233604546" value="5"> 5
-</div>
-<br>
-
-<!-- Question 8 -->
-<label> Airflow was comfortable</label>
-<div class="options">
-  <input type="radio" name="entry.79184680" value="1" required> 1
-  <input type="radio" name="entry.79184680" value="2"> 2
-  <input type="radio" name="entry.79184680" value="3"> 3
-  <input type="radio" name="entry.79184680" value="4"> 4
-  <input type="radio" name="entry.79184680" value="5"> 5
-</div>
-<br>
-
-<!-- Question 9 -->
-<label> The temperature felt right</label>
-<div class="options">
-  <input type="radio" name="entry.1861914012" value="1" required> 1
-  <input type="radio" name="entry.1861914012" value="2"> 2
-  <input type="radio" name="entry.1861914012" value="3"> 3
-  <input type="radio" name="entry.1861914012" value="4"> 4
-  <input type="radio" name="entry.1861914012" value="5"> 5
-</div>
-<br>
-
-<!-- Question 10 -->
-<label> The presence of trees, greenery, or shading elements improved comfort</label>
-<div class="options">
-  <input type="radio" name="entry.1431263997" value="1" required> 1
-  <input type="radio" name="entry.1431263997" value="2"> 2
-  <input type="radio" name="entry.1431263997" value="3"> 3
-  <input type="radio" name="entry.1431263997" value="4"> 4
-  <input type="radio" name="entry.1431263997" value="5"> 5
-</div>
-<br>
-
-<!-- Question 11 -->
-<label> The space looked visually pleasing</label>
-<div class="options">
-  <input type="radio" name="entry.966966598" value="1" required> 1
-  <input type="radio" name="entry.966966598" value="2"> 2
-  <input type="radio" name="entry.966966598" value="3"> 3
-  <input type="radio" name="entry.966966598" value="4"> 4
-  <input type="radio" name="entry.966966598" value="5"> 5
-</div>
-<br>
-
-<!-- Question 12 -->
-<label> Lighting improved comfort and mood</label>
-<div class="options">
-  <input type="radio" name="entry.1651479982" value="1" required> 1
-  <input type="radio" name="entry.1651479982" value="2"> 2
-  <input type="radio" name="entry.1651479982" value="3"> 3
-  <input type="radio" name="entry.1651479982" value="4"> 4
-  <input type="radio" name="entry.1651479982" value="5"> 5
-</div>
-<br>
-
-<!-- Question 13 -->
-<label> Seating areas or resting spots were well-integrated and inviting</label>
-<div class="options">
-  <input type="radio" name="entry.1358520434" value="1" required> 1
-  <input type="radio" name="entry.1358520434" value="2"> 2
-  <input type="radio" name="entry.1358520434" value="3"> 3
-  <input type="radio" name="entry.1358520434" value="4"> 4
-  <input type="radio" name="entry.1358520434" value="5"> 5
-</div>
-<br>
-
-<!-- Question 14 -->
-<label> The space supported fan activities (chants, photos, etc.)</label>
-<div class="options">
-  <input type="radio" name="entry.1811913673" value="1" required> 1
-  <input type="radio" name="entry.1811913673" value="2"> 2
-  <input type="radio" name="entry.1811913673" value="3"> 3
-  <input type="radio" name="entry.1811913673" value="4"> 4
-  <input type="radio" name="entry.1811913673" value="5"> 5
-</div>
-<br>
-
-<!-- Question 15 -->
-<label> I could see where to go next</label>
-<div class="options">
-  <input type="radio" name="entry.1747678794" value="1" required> 1
-  <input type="radio" name="entry.1747678794" value="2"> 2
-  <input type="radio" name="entry.1747678794" value="3"> 3
-  <input type="radio" name="entry.1747678794" value="4"> 4
-  <input type="radio" name="entry.1747678794" value="5"> 5
-</div>
-<br>
-
-<!-- Question 16 -->
-<label> I could anticipate what’s beyond this space</label>
-<div class="options">
-  <input type="radio" name="entry.2057998748" value="1" required> 1
-  <input type="radio" name="entry.2057998748" value="2"> 2
-  <input type="radio" name="entry.2057998748" value="3"> 3
-  <input type="radio" name="entry.2057998748" value="4"> 4
-  <input type="radio" name="entry.2057998748" value="5"> 5
-</div>
-<br>
-
-<!-- Question 17 -->
-<label> Signs and cues were visible from afar</label>
-<div class="options">
-  <input type="radio" name="entry.63631370" value="1" required> 1
-  <input type="radio" name="entry.63631370" value="2"> 2
-  <input type="radio" name="entry.63631370" value="3"> 3
-  <input type="radio" name="entry.63631370" value="4"> 4
-  <input type="radio" name="entry.63631370" value="5"> 5
-</div>
-
-<div class="form-divider"></div>
-
-
- <div class="section-header-text">
-          <h2 class="section-title"> Fan Activities in Threshold Spaces </h2>
-      </div> 
-        <div class="checklist" data-entry="entry.1024216442">
-      
- <label>Activities you did here (select all that apply)</label>
-<div class="checklist1"> 
-  <label><input type="checkbox" value="Waiting"> Waiting</label>
-  <label><input type="checkbox" value="Queueing"> Queueing</label>
-  <label><input type="checkbox" value="Buying merchandise/food/drinks"> Buying merchandise/food/drinks</label>
-  <label><input type="checkbox" value="Meeting with friends/fans"> Meeting with friends/fans</label>
-  <label><input type="checkbox" value="Participating in fan projects"> Participating in fan projects</label>
-  <label><input type="checkbox" value="Resting"> Resting</label>
-  <label><input type="checkbox" value="Taking photos/videos"> Taking photos/videos</label>
-  <label><input type="checkbox" value="Exploring"> Exploring</label>
-</div>
-
-<label>Others:</label>
-</div>
-
-<input type="text" class="others" data-entry="entry.1024216442" placeholder="Please specify"><br><br>
-<!-- Question 23: Approximately how long did you stay in this place? -->
-<label>Approximately how long did you stay in this place?</label><br>
-<div class="options2">
-  <label><input type="radio" name="entry.1144414676" value="Less than 10 mins" required> Less than 10 mins</label>
-  <label><input type="radio" name="entry.1144414676" value="10-30 mins"> 10-30 mins</label>
-  <label><input type="radio" name="entry.1144414676" value="30-60 mins"> 30-60 mins</label>
-  <label><input type="radio" name="entry.1144414676" value="More than one hour"> More than one hour</label>
-</div>
-<br> 
-<!-- Question 24: Enjoyable or memorable experiences -->
-<label for="q24"> What did you find enjoyable or memorable while staying here?</label><br>
-<textarea name="entry.1061310550" id="q24" rows="3" cols="50" required></textarea><br>
-
-<!-- Question 25: Challenges or difficulties -->
-<label for="q25"> What challenges or difficulties did you experience in this space?</label><br>
-<textarea name="entry.1410239538" id="q25" rows="3" cols="50" required></textarea><br>
-
-<!-- Question 26: Design improvements -->
-<label for="q26"> What design improvements (e.g., seating, shading, signage, circulation, entertainment) would make your experience better in this space?</label><br>
-<textarea name="entry.1195906890" id="q26" rows="3" cols="50" required></textarea><br>
-
-<div class="form-divider"></div>
-    <div class="section-header-text">
-          <h2 class="section-title"> Fan Behavioral Outcomes and Emotional Buildup while in the Threshold Space </h2>
-          <p class="section-description"> Instruction: Rate your experience on each threshold space you encountered from 1-5 (1 = strongly disagree to 5 = strongly agree)</p>
-</p>
-      </div>
-      <!-- Question 27 -->
-       <div class="form-divider"></div>
-<h2 class="section-subtext"> BEHAVIORAL OUTCOMES </h2>
-        <p class = "question-text"> PHYSICAL COMFORT AND SAFETY</p>
-  <div class="linear-scale">
-<label> Experienced stress or discomfort:</label>
-<div class="options">
-  <input type="radio" name="entry.1543803530" value="1" required> 1
-  <input type="radio" name="entry.1543803530" value="2"> 2
-  <input type="radio" name="entry.1543803530" value="3"> 3
-  <input type="radio" name="entry.1543803530" value="4"> 4
-  <input type="radio" name="entry.1543803530" value="5"> 5
-</div>
-<br>
-
-<!-- Question 28 -->
-<label> Looked for shaded or less crowded area:</label>
-<div class="options">
-  <input type="radio" name="entry.613876254" value="1" required> 1
-  <input type="radio" name="entry.613876254" value="2"> 2
-  <input type="radio" name="entry.613876254" value="3"> 3
-  <input type="radio" name="entry.613876254" value="4"> 4
-  <input type="radio" name="entry.613876254" value="5"> 5
-</div>
-<br>
- <p class = "question-text">  ORGANIZATION </p>
-
-<!-- Question 29 -->
-<label> I experienced confusion or disorientation while in the space:</label>
-<div class="options">
-  <input type="radio" name="entry.1396454786" value="1" required> 1
-  <input type="radio" name="entry.1396454786" value="2"> 2
-  <input type="radio" name="entry.1396454786" value="3"> 3
-  <input type="radio" name="entry.1396454786" value="4"> 4
-  <input type="radio" name="entry.1396454786" value="5"> 5
-</div>
-<br>
-
-<!-- Question 30 -->
-<label> Saw people cutting lines or breaking order, which affected my experience:</label>
-<div class="options">
-  <input type="radio" name="entry.702385915" value="1" required> 1
-  <input type="radio" name="entry.702385915" value="2"> 2
-  <input type="radio" name="entry.702385915" value="3"> 3
-  <input type="radio" name="entry.702385915" value="4"> 4
-  <input type="radio" name="entry.702385915" value="5"> 5
-</div>
-<br>
-<p class = "question-text">  SOCIAL INTERACTION </p>
-<!-- Question 31 -->
-<label> Interacted socially with fans:</label>
-<div class="options">
-  <input type="radio" name="entry.2124937577" value="1" required> 1
-  <input type="radio" name="entry.2124937577" value="2"> 2
-  <input type="radio" name="entry.2124937577" value="3"> 3
-  <input type="radio" name="entry.2124937577" value="4"> 4
-  <input type="radio" name="entry.2124937577" value="5"> 5
-</div>
-<br>
-
-<!-- Question 32 -->
-<label> Felt a strong sense of belonging with fellow fans:</label>
-<div class="options">
-  <input type="radio" name="entry.357909868" value="1" required> 1
-  <input type="radio" name="entry.357909868" value="2"> 2
-  <input type="radio" name="entry.357909868" value="3"> 3
-  <input type="radio" name="entry.357909868" value="4"> 4
-  <input type="radio" name="entry.357909868" value="5"> 5
-</div>
-<br>
-
-<!-- Question 33 -->
-<label> Made new friends while waiting:</label>
-<div class="options">
-  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="1" required> 1
-  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="2"> 2
-  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="3"> 3
-  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="4"> 4
-  <input type="radio" name="entry.[INSERT_ENTRY_ID_HERE]" value="5"> 5
-</div>
-<br>
-
-<div class="section-header-text">
-          <h2 class="section-title"> Emotional Buildup and Anticipation (Pre-event) </h2>
-          <p class="section-description"> Instruction: Rate your emotional buildup and anticipation before the actual event on each threshold space you encountered from 1-5 (1 = strongly disagree to 5 = strongly agree)</p>
-</p>
-      </div>
-<!-- Question 34 -->
- <h2 class="section-subtext"> EMOTIONAL BUILDING AND ANTICIPATION </h2>
-<label> This space increased my excitement for the concert</label>
-<div class="options">
-  <input type="radio" name="entry.2084468821" value="1" required> 1
-  <input type="radio" name="entry.2084468821" value="2"> 2
-  <input type="radio" name="entry.2084468821" value="3"> 3
-  <input type="radio" name="entry.2084468821" value="4"> 4
-  <input type="radio" name="entry.2084468821" value="5"> 5
-</div>
-<br>
-
-<!-- Question 35 -->
-<label> This space helped build a “concert mood.”</label>
-<div class="options">
-  <input type="radio" name="entry.170216511" value="1" required> 1
-  <input type="radio" name="entry.170216511" value="2"> 2
-  <input type="radio" name="entry.170216511" value="3"> 3
-  <input type="radio" name="entry.170216511" value="4"> 4
-  <input type="radio" name="entry.170216511" value="5"> 5
-</div>
-<br>
-
-<!-- Question 36 -->
-<label> I felt part of a shared fan community here</label>
-<div class="options">
-  <input type="radio" name="entry.1123801056" value="1" required> 1
-  <input type="radio" name="entry.1123801056" value="2"> 2
-  <input type="radio" name="entry.1123801056" value="3"> 3
-  <input type="radio" name="entry.1123801056" value="4"> 4
-  <input type="radio" name="entry.1123801056" value="5"> 5
-</div>
-<br>
-
-<!-- Question 37 -->
-<label> I felt bored and impatient</label>
-<div class="options">
-  <input type="radio" name="entry.1403862084" value="1" required> 1
-  <input type="radio" name="entry.1403862084" value="2"> 2
-  <input type="radio" name="entry.1403862084" value="3"> 3
-  <input type="radio" name="entry.1403862084" value="4"> 4
-  <input type="radio" name="entry.1403862084" value="5"> 5
-</div>
-<br>
-
-<!-- Question 38 -->
-<label> I felt that my mood shifted to concert mode</label>
-<div class="options">
-  <input type="radio" name="entry.1519805222" value="1" required> 1
-  <input type="radio" name="entry.1519805222" value="2"> 2
-  <input type="radio" name="entry.1519805222" value="3"> 3
-  <input type="radio" name="entry.1519805222" value="4"> 4
-  <input type="radio" name="entry.1519805222" value="5"> 5
-</div>
-<br>
-  </div>
  
 
-        <button type="submit">Submit</button>
-
-      </div> <!-- ✅ closes .section -->
-
-    </form>
-
     <div id="thankyou" style="display:none; text-align:center; padding:20px;">
-      <h3 class="section-title">RECORED!Please close this to continue evaluating other spaces</h3>
-      <p class="section-subtext">There may be more spaces to assess</p>
+      <h3 class="section-title">Your response has been recorded!</h3>
+      <p class="section-subtext">Close this to continue</p>
     </div>
 
   </div> <!-- ✅ closes .form-content -->
@@ -556,7 +169,7 @@ document.getElementById('concertForm').addEventListener('submit', function(e) {
   });
 
   // Submit directly to Google Forms
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLScNX780zoByCoNXFr0Oz3NKE0xL6SuMy6cnN_SO9tbhlnWRCg/formResponse', {
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaf9REWox43riA2QvPLCoWpGhLcIqSMkL5vc5FbbcZTxHAYg/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData
@@ -982,8 +595,8 @@ document.querySelectorAll('.pin').forEach(pin => {
 
 
 });
-document.body.classList.add("modal-open");
-document.body.classList.remove("modal-open");
+
+
 </script>
 </body>
 </html>
